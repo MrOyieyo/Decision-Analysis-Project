@@ -73,8 +73,7 @@ ggplot(data = stakeholder, aes(x = Expertise,
 ```
 
 Government, NGO, irrigation authority = most important (as expected) 
-BUT stakeholders with the strongest influence aren’t the best experts and don’t have the biggest available capital (ministry, etc.)
-
+It confirms our choice to work with the Government as the decision maker.
 
 
 
