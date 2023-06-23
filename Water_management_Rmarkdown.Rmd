@@ -32,13 +32,14 @@ library(ggplot2)
 library(ggrepel)
 library(ggthemes)
 library(readxl)
+library(dplyr)
 
 stakeholder<-Stakeholder_Management_data <- read.csv("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Dripprojectdata.csv") 
                                                        col_types = c("text", "text", "text", 
                                                                      "numeric", "numeric", "numeric", 
                                                                      "numeric", "numeric")
 
-print(Stakeholder_Management_data)
+#print(Stakeholder_Management_data)
 
 ggplot(data = stakeholder, aes(x = Expertise, 
                                y = Capital_Availability, 
@@ -89,21 +90,148 @@ Government always looks at the social economic value and the viability of the pr
 
 ```{r}
 library(imager)
-Conceptual_model <- load.image("C:/Users/oyiey/Downloads/conceptual_model.jpg")
+Conceptual_model <- load.image("C:/Users/oyiey/Downloads/Conceptual model (1).png")
 plot(Conceptual_model)
 
 ```
 
-## What next
-We hope to come up with estimate data that will give value to the uncertainties linked to our project using McSimulation. 
-Building the model with Plot of the impact pathway and calibration of the data will consequentially take place.
-                   
-                   
+
+
+
+
+23rd June 2023
+
+Presentation 
+
+Our presentation of today is more about the codes used to generate the models and explanation behind it.
+Creation of the impact pathway.
+```{r}
+library(DiagrammeR)
+mermaid(diagram = "graph LR
+    Y(Yield)-->Ag(AgricIncome); linkStyle 0 stroke: blue, stroke-width:1.5px
+    Mg(Management)-->Ag; linkStyle 1 stroke: blue, stroke-width:1.5px
+    WB(Watersource)-->Ex(ExternalIncome); linkStyle 2 stroke: blue, stroke-width:1.5px
+    Ag-->TP(TotalProfit); linkStyle 3 stroke:blue, stroke-width: 1.5px
+    Ex-->TP; linkStyle 4 stroke: blue, stroke-width: 1.5px
+    In(InstallCost)-->TC(Total_Cost); linkStyle 5 stroke: red, stroke-width:1.5px
+    MngtC(ManagementCost)-->TC; linkStyle 6 stroke: red, stroke-width: 1.5px
+    TP-->NP(NetProfit); linkStyle 7 stroke: blue, stroke-width: 1.5px
+    TC-->NP; linkStyle 8 stroke: red, stroke-width: 1.5px")
+
+```                   
+
+
+Model building
+
+```{r}
+library(decisionSupport)
+dripline_estimates <- data.frame(variable = c("Yield","Marketvalue", "Management", "Watersource", 
+                                              "Nutrition", "Powergeneration", "Establishmentcost", 
+                                           "Managementcost"),
+                              lower = c(25, 5, 10, 6, 3, 5, 18, 8),                  #Values *10K
+                              median = NA,
+                              upper = c(90, 20, 39, 20, 13, 17, 81, 34),             #Values *10K 
+                              distribution = c("posnorm", "posnorm", "posnorm", "posnorm", "posnorm", 
+                                               "posnorm", "posnorm", "posnorm"),
+                              label = c("Yield (kg/ha)", "Price (ksh/kg)", "management_savings(ksh)", 
+                                        "Basinprofits(ksh)", "Nutrientgain(ksh)",
+                                        "Electricity(ksh/Kw)", "instalationcost(ksh", "managementcost(Ksh)"),
+                              Description = c("Yield of the maize crop", "Market price per KG of maize grain", 
+                                              "Reduced cost of weed management",
+                                              "Benefits generated from efficient water use from basin", 
+                                              "Value of food nutrient generated", 
+                                              "Kw of electricity increased by increased water levels", 
+                                              "Cost of generating installing the project", 
+                                              "Cost of project maintainance"))
+dripline_estimates
+
+dripmodel_function <- function(){
+  #The model_function
+  # Estimate the income in a normal season
+  AgriIncome <- (Yield*Marketvalue) + Management 
+  ExtIncome <- Watersource + Nutrition + Powergeneration
+  TotalProfits <- AgriIncome + ExtIncome
+  
+  # Estimate the overall costs
+  Overallcosts<- Establishmentcost + Managementcost
+  
+  # Estimate the final results from the model
+  final_result <- TotalProfits - Overallcosts
+  
+  # Generate the list of outputs from the Monte Carlo simulation
+  return(list(final_result = final_result))
+  }
+
+dripline_mc_simulation <- mcSimulation(estimate = as.estimate(dripline_estimates),
+                                       model_function = dripmodel_function,
+                                       numberOfModelRuns = 800,
+                                       functionSyntax = "plainNames")
+#dripline_mc_simulation
+
+plot_distributions(mcSimulation_object = dripline_mc_simulation,
+                   vars = "final_result",
+                   method = "boxplot_density",
+                   old_names = "final_result",
+                   new_names = "Outcome distribution for profits")
+
+
+``` 
+
+#Value estimates
+#### SURFACE IRRIGATION ####
+#surface irrigation pathway
+
+```{r}
+library(igraph)
+SurfaceIrr_path<-graph.formula(SurfaceIrr-+Yield,
+                               SurfaceIrr-+Incomes,
+                               SurfaceIrr-+Management,
+                               MaintenanceCost-+SurfaceIrr,
+                               MaintenanceCost-+TotalCost,
+                               Incomes-+TotalBenefits,
+                               Management-+TotalBenefits,
+                               Yields-+TotalBenefits,
+                               TotalBenefits-+CurrentSituationOutcome,
+                               TotalCost-+CurrentSituationOutcome)
+#plot(SurfaceIrr_path)
+
+SurfaceIrr_Path<-graph.formula()
+
+#surface Irrigation estimates
+library(decisionSupport)
+SurfaceIrr_estimates <- data.frame(variable = c("Yield","Management","Incomes","Maintenancecost"),
+                                   lower = c(14, 2, 20, 4),
+                                   median = NA,
+                                   upper = c(20, 10, 23, 10),
+                                   distribution = c("posnorm","posnorm","posnorm","posnorm"),
+                                   label = c("Yield (kg/ha)","Savings","Incomes (Ksh)","managementcost(Ksh)"),
+                                   Description = c("Total Yields (Ksh","Savings from Management (Ksh)","All incomes earned (Ksh)","Cost of project maintainance"))
+
+View(SurfaceIrr_estimates)
+
+#Surface Irrigation Function
+SurfaceIrr_function <- function(){
+  TotalBenefits <-(Yield+Management+Incomes)
+  TotalCost<-Maintenancecost
+  final_result<-TotalBenefits-TotalCost
+  return(list(final_result = final_result))
+}
+
+# Monte-Carlo simulation
+SurfaceIrr_mc_simulation <- mcSimulation(estimate = as.estimate(SurfaceIrr_estimates),
+                                         model_function = SurfaceIrr_function,
+                                         numberOfModelRuns = 800,
+                                         functionSyntax = "plainNames")
+
+
+#Plot distribution
+plot_distributions(mcSimulation_object = SurfaceIrr_mc_simulation,
+                   vars = "final_result",
+                   method = "boxplot_density",
+                   old_names = "final_result",
+                   new_names = "Outcome distribution for profits")
+``` 
                    #THANK YOU
 
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
