@@ -2,7 +2,9 @@
 title: "Presentation"
 author: "Water Management Project Group"
 date: "2023-06-16"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 #Drip Irrigation adoption in Kenya Irrigation schemes
 #Inroduction
@@ -163,7 +165,7 @@ dripmodel_function <- function(){
 
 dripline_mc_simulation <- mcSimulation(estimate = as.estimate(dripline_estimates),
                                        model_function = dripmodel_function,
-                                       numberOfModelRuns = 800,
+                                       numberOfModelRuns = 500,
                                        functionSyntax = "plainNames")
 #dripline_mc_simulation
 
@@ -219,7 +221,7 @@ SurfaceIrr_function <- function(){
 # Monte-Carlo simulation
 SurfaceIrr_mc_simulation <- mcSimulation(estimate = as.estimate(SurfaceIrr_estimates),
                                          model_function = SurfaceIrr_function,
-                                         numberOfModelRuns = 800,
+                                         numberOfModelRuns = 600,
                                          functionSyntax = "plainNames")
 
 
