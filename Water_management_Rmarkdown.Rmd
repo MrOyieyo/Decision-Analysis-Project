@@ -231,7 +231,7 @@ plot_distributions(mcSimulation_object = SurfaceIrr_mc_simulation,
                    old_names = "final_result",
                    new_names = "Outcome distribution for profits")
 ``` 
-                   #THANK YOU
+                   NOTE:    We hope to smooth the flow of the project 
 
 
 
