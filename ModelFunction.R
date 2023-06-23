@@ -1,7 +1,8 @@
 # Imports
 library(decisionSupport)
+library(igraph)
 
-
+#### DRIP IRRIGATION ####
 #Building the model
 dripline_estimates <- data.frame(variable = c("Yield","Marketvalue", "Management", "Watersource", "Nutrition", "Powergeneration", "Establishmentcost", 
                                               "Managementcost"),
@@ -16,10 +17,6 @@ dripline_estimates <- data.frame(variable = c("Yield","Marketvalue", "Management
                                                  "Kw of electricity increased by increased water levels", "Cost of generating installing the project", 
                                                  "Cost of project maintainance" ))
 
-dripline_mc_simulation <- mcSimulation(estimate = as.estimate(dripline_estimates),
-                                       model_function = dripmodel_function,
-                                       numberOfModelRuns = 800,
-                                       functionSyntax = "plainNames")
 
 dripmodel_function <- function(){
   #The model_function
@@ -43,6 +40,7 @@ dripline_mc_simulation <- mcSimulation(estimate = as.estimate(dripline_estimates
                                        model_function = dripmodel_function,
                                        numberOfModelRuns = 800,
                                        functionSyntax = "plainNames")
+
 dripline_mc_simulation
 
 #Plot distribution
@@ -54,7 +52,51 @@ plot_distributions(mcSimulation_object = dripline_mc_simulation,
 
 
 
+#### SURFACE IRRIGATION ####
+#surface irrigation pathway
+SurfaceIrr_path<-graph.formula(SurfaceIrr-+Yield,
+                               SurfaceIrr-+Incomes,
+                               SurfaceIrr-+Management,
+                               MaintenanceCost-+SurfaceIrr,
+                               MaintenanceCost-+TotalCost,
+                               Incomes-+TotalBenefits,
+                               Management-+TotalBenefits,
+                               Yields-+TotalBenefits,
+                               TotalBenefits-+CurrentSituationOutcome,
+                               TotalCost-+CurrentSituationOutcome)
+plot(SurfaceIrr_path)
+
+SurfaceIrr_Path<-graph.formula()
+
+#surface Irrigation estimates
+SurfaceIrr_estimates <- data.frame(variable = c("Yield","Management","Incomes","Maintenancecost"),
+                                   lower = c(14, 2, 20, 4),
+                                   median = NA,
+                                   upper = c(20, 10, 23, 10),
+                                   distribution = c("posnorm","posnorm","posnorm","posnorm"),
+                                   label = c("Yield (kg/ha)","Savings","Incomes (Ksh)","managementcost(Ksh)"),
+                                   Description = c("Total Yields (Ksh","Savings from Management (Ksh)","All incomes earned (Ksh)","Cost of project maintainance"))
+
+SurfaceIrr_estimates
+
+#Surface Irrigation Function
+SurfaceIrr_function <- function(){
+  TotalBenefits <-(Yield+Management+Incomes)
+  TotalCost<-Maintenancecost
+  final_result<-TotalBenefits-TotalCost
+  return(list(final_result = final_result))
+}
+
+# Monte-Carlo simulation
+SurfaceIrr_mc_simulation <- mcSimulation(estimate = as.estimate(SurfaceIrr_estimates),
+                                       model_function = SurfaceIrr_function,
+                                       numberOfModelRuns = 800,
+                                       functionSyntax = "plainNames")
 
 
-
-
+#Plot distribution
+plot_distributions(mcSimulation_object = SurfaceIrr_mc_simulation,
+                   vars = "final_result",
+                   method = "boxplot_density",
+                   old_names = "final_result",
+                   new_names = "Outcome distribution for profits")
