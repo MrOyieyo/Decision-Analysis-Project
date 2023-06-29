@@ -11,5 +11,8 @@ Surface_Yield,14,NA,20,posnorm,Yield (kg/ha),Total Yields (Ksh)
 Surface_Management,2,NA,10,posnorm,Savings,Savings from Management (Ksh)
 Surface_Incomes,20,NA,23,posnorm,Incomes (Ksh),All incomes earned (Ksh)
 Surface_Maintenancecost,4,NA,10,posnorm,managementcost(Ksh),Cost of project maintainanc
-Drought,0.1,NA,0.3,tnorm_0_1,,
+Drought_Event,0.1,NA,0.3,tnorm_0_1,,
 discount_rate,1,,5,posnorm,Discount rate (%),
+var_CV,5,,20,posnorm,coeff. Variation,
+Drought_Discount,0.1,,0.2,posnorm, losses due to drought,
+n_years,5,,5,const, Project time horizon (years)
