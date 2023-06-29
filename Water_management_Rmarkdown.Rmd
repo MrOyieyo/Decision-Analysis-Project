@@ -33,13 +33,10 @@ Plot #capital availability, #expertise,  #influence.
 library(ggplot2)
 library(ggrepel)
 library(ggthemes)
-library(readxl)
+library(readr)
 library(dplyr)
 
-stakeholder<-read.csv("https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Stakeholder%20Management%20data.csv") 
-                                                       col_types = c("text", "text", "text", 
-                                                                     "numeric", "numeric", "numeric", 
-                                                                     "numeric", "numeric")
+stakeholder<-read.csv("https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Stakeholder%20Management%20data.csv")
 
 #print(Stakeholder_Management_data)
 
