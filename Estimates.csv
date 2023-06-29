@@ -10,7 +10,7 @@ Drip_Establishmentcost,18,NA,81,posnorm,instalationcost(ksh,Cost of generating i
 Surface_Yield,14,NA,20,posnorm,Yield (kg/ha),Total Yields (Ksh)
 Surface_Management,2,NA,10,posnorm,Savings,Savings from Management (Ksh)
 Surface_Incomes,20,NA,23,posnorm,Incomes (Ksh),All incomes earned (Ksh)
-Surface_Maintenancecost,4,NA,10,posnorm,managementcost(Ksh),Cost of project maintainanc
+Surface_Maintenancecost,4,NA,10,posnorm,managementcost(Ksh),Cost of project maintainance,
 Drought_Event,0.1,NA,0.3,tnorm_0_1,,Risk of drought,
 discount_rate,1,,5,posnorm,,Discount rate (%),
 var_CV,5,,20,posnorm,,coeff. Variation,
