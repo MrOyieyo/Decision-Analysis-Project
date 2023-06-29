@@ -15,4 +15,4 @@ Drought_Event,0.1,NA,0.3,tnorm_0_1,,
 discount_rate,1,,5,posnorm,Discount rate (%),
 var_CV,5,,20,posnorm,coeff. Variation,
 Drought_Discount,0.1,,0.2,posnorm, losses due to drought,
-n_years,5,,5,const, Project time horizon (years)
+n_years,5,,5,const, Project time horizon (years),
