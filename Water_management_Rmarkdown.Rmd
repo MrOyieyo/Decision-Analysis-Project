@@ -312,6 +312,7 @@ mcSimulation_results <- decisionSupport::mcSimulation(
 )
 ​```
 ### Plot distribution
+
 ```{r}
 # Plot distrbution ####
 decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results, 
