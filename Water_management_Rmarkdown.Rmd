@@ -88,7 +88,7 @@ Government always looks at the social economic value and the viability of the pr
 
 ```{r}
 library(imager)
-Conceptual_model <- load.image("C:/Users/oyiey/Downloads/Conceptual model (1).png")
+Conceptual_model <- load.image("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/fb180332d940b7e317850d51f5255d2f41b2e3b0/Conceptual%20model.png")
 plot(Conceptual_model)
 
 ```
