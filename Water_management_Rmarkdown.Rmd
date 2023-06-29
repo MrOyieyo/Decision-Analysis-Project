@@ -122,7 +122,7 @@ mermaid(diagram = "graph LR
 ```                   
 
 
-Model building
+# Simple Model building
 
 ```{r}
 library(decisionSupport)
@@ -231,8 +231,99 @@ plot_distributions(mcSimulation_object = SurfaceIrr_mc_simulation,
                    method = "boxplot_density",
                    old_names = "final_result",
                    new_names = "Outcome distribution for profits")
+```
+## Final Model building 
+
+### Model function
+
+```{r}
+# Imports ####
+library(readr)
+library(decisionSupport)
+​
+# Estimates table
+url_table<-"https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Estimates.csv"
+input_table<-read_csv(url(url_table))
+View(input_table)
+​
+# Model function ####
+irrigation_model_function<-function(x, varnames){
+ 
+   # calculate drought risks: impact the implementation of drought ####
+  droughtEvent <-chance_event(Drought_Event, 1, 0, n = 1)
+​
+  
+  #  Intervention ####
+    for (decision_drip_irrigation in c(FALSE,TRUE)){
+    
+    if (decision_drip_irrigation){
+      
+      # Profits ####
+      Profits<-vv(Drip_Yield,Var_CV,n_years)*Marketvalue+Drip_Management
+      
+      # Costs ####
+      Overallcosts<- Drip_Establishmentcost + Drip_Managementcost
+      
+      # Results ####
+      net_benefits <- Profits - Overallcosts
+      result_drip <- net_benefits
+    }
+      
+    else{
+      
+      # Profits ####
+        # Drought
+      if (droughtEvent){
+        Profits<-vv(Surface_Yield,Var_CV,n_years)*
+          vv(Drought_Discount, Var_CV,n_years)*
+            Marketvalue+Surface_Management}
+      
+        # No drought
+      else{
+      Profits<-vv(Surface_Yield,Var_CV,n_years)*Marketvalue+Surface_Management}
+      
+      # Costs ####
+      Overallcosts<- Surface_Maintenancecost
+      
+      # Results ####
+      net_benefits <- Profits - Overallcosts
+      result_surface <- net_benefits}
+      
+  }   #close intervention loop bracket
+      NPV_interv <-
+        discount(result_drip, discount_rate, calculate_NPV = TRUE)
+      
+      NPV_n_interv <-
+        discount(result_surface, discount_rate, calculate_NPV = TRUE)
+      
+      return(list(Drip_NPV = NPV_interv,
+                  Surf_NPV = NPV_n_interv,
+                  NPV_decision_do = NPV_interv - NPV_n_interv,
+                  Cashflow_decision_do = result_drip - result_surface))}
+​
+```
+### Mc Simulation
+```{r}
+mcSimulation_results <- decisionSupport::mcSimulation(
+  estimate = decisionSupport::estimate_read_csv("https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Estimates.csv"),
+  model_function = irrigation_model_function,
+  numberOfModelRuns = 200,
+  functionSyntax = "plainNames"
+)
+​```
+### Plot distribution
+```{r}
+# Plot distrbution ####
+decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results, 
+                                    vars = c("Drip_NPV","Surf_NPV"),
+                                    method = 'smooth_simple_overlay', 
+                                    base_size = 7)
+​
+​
+decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results, 
+                                    vars = c("Drip_NPV",
+                                             "Surf_NPV"),
+                                    method = 'boxplot')
+
 ``` 
-                   NOTE:    
-
-
 
