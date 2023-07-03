@@ -19,10 +19,10 @@ irrigation_model_function<-function(x, varnames){
     if (decision_drip_irrigation){
       
       # Profits ####
-      Profits<-vv(Drip_Yield,Var_CV,n_years)*Marketvalue+Drip_Management
+      Profits<-vv(Drip_Yield,Var_CV,n_years)*Marketvalue+Drip_Management+Drip_All_other_incomes
       
       # Costs ####
-      Overallcosts<- Drip_Establishmentcost + Drip_Managementcost
+      Overallcosts<- Drip_Establishmentcost + Drip_ManagementCost
       
       # Results ####
       net_benefits <- Profits - Overallcosts
@@ -36,14 +36,16 @@ irrigation_model_function<-function(x, varnames){
       if (droughtEvent){
         Profits<-vv(Surface_Yield,Var_CV,n_years)*
           (1-vv(Drought_Discount, Var_CV,n_years))*
-          Marketvalue+Surface_Management}
+          Marketvalue+Surface_Management+Surface_All_other_incomes
+      }
       
       # No drought
       else{
-        Profits<-vv(Surface_Yield,Var_CV,n_years)*Marketvalue+Surface_Management}
+        Profits<-vv(Surface_Yield,Var_CV,n_years)*Marketvalue
+        +Surface_Management+Surface_All_other_incomes}
       
       # Costs ####
-      Overallcosts<- Surface_Maintenancecost
+      Overallcosts<- Surface_MaintenanceCost
       
       # Results ####
       net_benefits <- Profits - Overallcosts

@@ -1,18 +1,18 @@
 variable,lower,median,upper,distribution,label,Description
-Drip_Yield,25,NA,90,posnorm,Yield (kg/ha),Yield of the maize crop
-Drip_Watersource,6,NA,20,posnorm,Basinprofits(ksh),Benefits generated from efficient water use from basin
-Drip_Powergeneration,5,NA,17,posnorm,Electricity(ksh/Kw),Kw of electricity increased by increased water levels
-Drip_Nutrition,3,NA,13,posnorm,Nutrientgain(ksh),Value of food nutrient generated
-Marketvalue,0.5,NA,5,posnorm,Price (ksh/kg),Market price per KG of maize grain
-Drip_Managementcost,8,NA,34,posnorm,managementcost(Ksh),Cost of project maintainance
-Drip_Management,10,NA,39,posnorm,management_savings(ksh),Reduced cost of weed management
-Drip_Establishmentcost,18,NA,81,posnorm,instalationcost(ksh,Cost of generating installing the projec
-Surface_Yield,14,NA,20,posnorm,Yield (kg/ha),Total Yields (Ksh)
-Surface_Management,2,NA,10,posnorm,Savings,Savings from Management (Ksh)
-Surface_Incomes,20,NA,23,posnorm,Incomes (Ksh),All incomes earned (Ksh)
-Surface_Maintenancecost,4,NA,10,posnorm,managementcost(Ksh),Cost of project maintainance
+Drip_Yield,25,NA,90,posnorm,Yield (Ksh/ha),Amount  from  the Yield of the maize crop
+Drip_Management,10,NA,39,posnorm,management_savings(ksh),Amount saved on labour and weed management
+Drip_All_other_incomes,14,NA,50,posnorm,All other earnings(ksh), "Amount earned and saved from all other inputs (Tourism, Electricity,Taxes, ESS among others) efficient water use from basin"
+Drip_Establishmentcost,18,NA,81,posnorm,Instalationcost(ksh),Cost of installing the project
+Drip_MaintenanceCost,8,NA,34,posnorm,Maintenance cost(Ksh),Cost of project maintainance
+Drip_ManagementCost,8,NA,34,posnorm,managementcost(Ksh),Cost of project maintainance
+Surface_Yield,14,NA,20,posnorm,Yield (Ksh/ha),Amount from the Yield of the maize crop
+Surface_Management,2,NA,10,posnorm,management_savings(ksh),Amount saved on labour and weed management
+Surface_All_other_incomes,10,NA,23,posnorm,All other earnings(ksh),"Amount earned and saved from all other inputs (Tourism, Electricity,Taxes, ESS among others)efficient water use from basin"
+Surface_Establishmentcost,10,NA,20,posnorm,Installationcost(ksh), Cost of installing the project
+Surface_MaintenanceCost,4,NA,10,posnorm,Maintenance cost(Ksh),Cost of project maintainance
+Marketvalue,5,NA,5,const,Price (ksh/kg),Market price per KG of maize grain
+discount_rate,1,NA,5,posnorm,NA,Discount rate (%)
 Drought_Event,0.1,NA,0.3,tnorm_0_1,,Risk of drought
-discount_rate,1,,5,posnorm,,Discount rate (%)
-Var_CV,5,,20,posnorm,,coeff. Variation
-Drought_Discount,0.1,,0.2,posnorm,,losses due to drought
-n_years,5,,5,const,,Project time horizon (years)
+Drought_Discount,0.1,NA,0.2,posnorm,NA,losses due to drought
+Var_CV,5.0,NA,20.0,posnorm,NA, coeff. Variation
+n_years,5.0,NA,5.0,const,NA, Project time horizon (years)
