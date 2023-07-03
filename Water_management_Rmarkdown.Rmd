@@ -36,7 +36,7 @@ library(ggthemes)
 library(readr)
 library(dplyr)
 
-stakeholder<-read.csv("https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Stakeholder%20Management%20data.csv")
+stakeholder<-read.csv("Stakeholder Management data.csv")
 
 #print(Stakeholder_Management_data)
 
@@ -88,7 +88,7 @@ Government always looks at the social economic value and the viability of the pr
 
 ```{r}
 library(imager)
-Conceptual_model <- load.image("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/fb180332d940b7e317850d51f5255d2f41b2e3b0/Conceptual%20model.png")
+Conceptual_model <- load.image("Conceptual model.png")
 plot(Conceptual_model)
 
 ```
@@ -237,18 +237,17 @@ plot_distributions(mcSimulation_object = SurfaceIrr_mc_simulation,
 # Imports ####
 library(readr)
 library(decisionSupport)
-​
+
 # Estimates table
-url_table<-"https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Estimates.csv"
-input_table<-read_csv(url(url_table))
+input_table<-read_csv("Estimates.csv")
 View(input_table)
-​
+
 # Model function ####
 irrigation_model_function<-function(x, varnames){
  
    # calculate drought risks: impact the implementation of drought ####
   droughtEvent <-chance_event(Drought_Event, 1, 0, n = 1)
-​
+
   
   #  Intervention ####
     for (decision_drip_irrigation in c(FALSE,TRUE)){
@@ -297,17 +296,17 @@ irrigation_model_function<-function(x, varnames){
                   Surf_NPV = NPV_n_interv,
                   NPV_decision_do = NPV_interv - NPV_n_interv,
                   Cashflow_decision_do = result_drip - result_surface))}
-​
+
 ```
 ### Mc Simulation
 ```{r}
 mcSimulation_results <- decisionSupport::mcSimulation(
-  estimate = decisionSupport::estimate_read_csv("https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Estimates.csv"),
+  estimate = decisionSupport::estimate_read_csv("Estimates.csv"),
   model_function = irrigation_model_function,
   numberOfModelRuns = 200,
   functionSyntax = "plainNames"
 )
-​```
+```
 ### Plot distribution
 ```{r}
 # Plot distrbution ####
@@ -315,8 +314,8 @@ decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results,
                                     vars = c("Drip_NPV","Surf_NPV"),
                                     method = 'smooth_simple_overlay', 
                                     base_size = 7)
-​
-​
+
+
 decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results, 
                                     vars = c("Drip_NPV",
                                              "Surf_NPV"),
