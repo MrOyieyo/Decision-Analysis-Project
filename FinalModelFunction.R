@@ -22,7 +22,7 @@ irrigation_model_function<-function(x, varnames){
       Profits<-vv(Drip_Yield,Var_CV,n_years)*Marketvalue+Drip_Management+Drip_All_other_incomes
       
       # Costs ####
-      Overallcosts<- Drip_Establishmentcost + Drip_ManagementCost
+      Overallcosts<- Drip_Establishmentcost
       
       # Results ####
       net_benefits <- Profits - Overallcosts
@@ -74,9 +74,7 @@ mcSimulation_results <- decisionSupport::mcSimulation(
 decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results, 
                                     vars = c("Drip_NPV","Surf_NPV"),
                                     method = 'smooth_simple_overlay', 
-                                    base_size = 7)
-
-
+                                    base_size = 7)+
 decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results, 
                                     vars = c("Drip_NPV",
                                              "Surf_NPV"),
