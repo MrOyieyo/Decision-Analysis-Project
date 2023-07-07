@@ -62,7 +62,7 @@ irrigation_model_function_withoutDrought<-function(x){
               Surf_NPV = NPV_n_interv,
               NPV_decision_do = NPV_interv - NPV_n_interv,
               Cashflow_decision_drip = result_drip,
-              Cashfolw_decision_surface = result_surface))}
+              Cashflow_decision_surface = result_surface))}
 
 mcSimulation_results_withoutDrought <- decisionSupport::mcSimulation(
   estimate = decisionSupport::estimate_read_csv("Estimates.csv"),
@@ -83,12 +83,22 @@ decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_w
 
 # Plot cashflow ####
 plot_cashflow(mcSimulation_object = mcSimulation_results_withoutDrought, 
-              cashflow_var_name = c("Cashflow_decision_drip", "Cashfolw_decision_surface"),
+              cashflow_var_name = c("Cashflow_decision_drip", "Cashflow_decision_surface"),
               x_axis_name = "Years with intervention",
               y_axis_name = "Annual cashflow in KSh",
               color_25_75 = "purple4", color_5_95 ="purple2",
               color_median = "red", 
               facet_labels = c("Drip irrigation", "Surface irrigation"))
+
+
+# Compound 
+compound_figure(model = irrigation_model_function_withoutDrought, 
+                input_table = input_table, 
+                decision_var_name = "Surf_NPV",
+                cashflow_var_name = "Cashflow_decision_surface",
+                model_runs = 1e2, 
+                distribution_method = 'smooth_simple_overlay')
+
 
 
 # Model function WITH DROUGHT ####
@@ -177,19 +187,9 @@ plot_cashflow(mcSimulation_object = mcSimulation_results_withDrought,
 
 
 # Compound 
-
-profit1 <- function() {
-  Decision <- revenue - costs
-  cashflow <- rnorm(rep(revenue, 20))
-  return(list(Revenues = revenue,
-              Costs = costs, 
-              cashflow = cashflow, 
-              Decision = Decision))
-}
-
-compound_figure(model = profit1, 
-                input_table = cost_benefit_table, 
-                decision_var_name = "Decision",
-                cashflow_var_name = "cashflow",
+compound_figure(model = irrigation_model_function_withDrought, 
+                input_table = input_table, 
+                decision_var_name = "Drip_NPV",
+                cashflow_var_name = "Cashflow_decision_drip",
                 model_runs = 1e2, 
                 distribution_method = 'smooth_simple_overlay')
