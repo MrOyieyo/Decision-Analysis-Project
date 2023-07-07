@@ -161,7 +161,7 @@ decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_w
                                     vars = c("Drip_NPV","Surf_NPV"),
                                     method = 'smooth_simple_overlay', 
                                     base_size = 7)+
-  decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_withDrought, 
+decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_withDrought, 
                                       vars = c("Drip_NPV",
                                                "Surf_NPV"),
                                       method = 'boxplot')+
@@ -174,6 +174,5 @@ plot_cashflow(mcSimulation_object = mcSimulation_results_withDrought,
               color_25_75 = "purple4", color_5_95 ="purple2",
               color_median = "red", 
               facet_labels = c("Drip irrigation", "Surface irrigation"))
-
 
 
