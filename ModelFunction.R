@@ -100,3 +100,6 @@ plot_distributions(mcSimulation_object = SurfaceIrr_mc_simulation,
                    method = "boxplot_density",
                    old_names = "final_result",
                    new_names = "Outcome distribution for profits")
+
+# trial code###
+
