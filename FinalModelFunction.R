@@ -7,7 +7,7 @@ input_table<-read.csv("Estimates.csv")
 View(input_table)
 
 # Model function ####
-irrigation_model_function<-function(x, varnames){
+irrigation_model_function<-function(x){
   
   # calculate drought risks: impact the implementation of drought ####
   droughtEvent <-chance_event(Drought_Event, 1, 0, n = 1)
@@ -61,7 +61,8 @@ irrigation_model_function<-function(x, varnames){
   return(list(Drip_NPV = NPV_interv,
               Surf_NPV = NPV_n_interv,
               NPV_decision_do = NPV_interv - NPV_n_interv,
-              Cashflow_decision_do = result_drip - result_surface))}
+              Cashflow_decision_drip = result_drip,
+              Cashfolw_decision_surface = result_surface))}
 
 mcSimulation_results <- decisionSupport::mcSimulation(
   estimate = decisionSupport::estimate_read_csv("Estimates.csv"),
@@ -79,3 +80,18 @@ decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results,
                                     vars = c("Drip_NPV",
                                              "Surf_NPV"),
                                     method = 'boxplot')
+
+
+plot_cashflow(mcSimulation_object = mcSimulation_results, cashflow_var_name = "Cashflow_decision_surface",
+              x_axis_name = "Years with intervention",
+              y_axis_name = "Annual cashflow in Ksh",
+              color_25_75 = "green4", color_5_95 = "green1",
+              color_median = "red")
+
+plot_cashflow(mcSimulation_object = mcSimulation_results, 
+              cashflow_var_name = c("Cashflow_decision_drip", "Cashfolw_decision_surface"),
+              x_axis_name = "Years with intervention",
+              y_axis_name = "Annual cashflow in USD",
+              color_25_75 = "purple4", color_5_95 ="purple2",
+              color_median = "red", 
+              facet_labels = c("Drip irrigation", "Surface irrigation"))
