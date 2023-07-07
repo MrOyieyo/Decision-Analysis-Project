@@ -176,3 +176,4 @@ plot_cashflow(mcSimulation_object = mcSimulation_results_withDrought,
               facet_labels = c("Drip irrigation", "Surface irrigation"))
 
 
+
