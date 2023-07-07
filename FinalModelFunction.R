@@ -159,9 +159,9 @@ irrigation_model_function_withDrought<-function(x){
               Cashflow_decision_drip = result_drip,
               Cashfolw_decision_surface = result_surface))}
 
-mcSimulation_results_withDrought <- decisionSupport::mcSimulation(
+mcSimulation_results_withoutDrought <- decisionSupport::mcSimulation(
   estimate = decisionSupport::estimate_read_csv("Estimates.csv"),
-  model_function = irrigation_model_function_withDrought,
+  model_function = irrigation_model_function_withoutDrought,
   numberOfModelRuns = 200,
   functionSyntax = "plainNames"
 )
