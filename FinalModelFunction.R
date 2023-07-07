@@ -161,7 +161,7 @@ irrigation_model_function_withDrought<-function(x){
 
 mcSimulation_results_withoutDrought <- decisionSupport::mcSimulation(
   estimate = decisionSupport::estimate_read_csv("Estimates.csv"),
-  model_function = irrigation_model_function_withoutDrought,
+  model_function = irrigation_model_function_withDrought,
   numberOfModelRuns = 200,
   functionSyntax = "plainNames"
 )
