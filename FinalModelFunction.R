@@ -176,3 +176,20 @@ plot_cashflow(mcSimulation_object = mcSimulation_results_withDrought,
               facet_labels = c("Drip irrigation", "Surface irrigation"))
 
 
+# Compound 
+
+profit1 <- function() {
+  Decision <- revenue - costs
+  cashflow <- rnorm(rep(revenue, 20))
+  return(list(Revenues = revenue,
+              Costs = costs, 
+              cashflow = cashflow, 
+              Decision = Decision))
+}
+
+compound_figure(model = profit1, 
+                input_table = cost_benefit_table, 
+                decision_var_name = "Decision",
+                cashflow_var_name = "cashflow",
+                model_runs = 1e2, 
+                distribution_method = 'smooth_simple_overlay')
