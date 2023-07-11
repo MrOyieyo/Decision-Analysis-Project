@@ -70,7 +70,7 @@ decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_w
                                       vars = c("Drip_NPV",
                                                "Surf_NPV"),
                                       method = 'boxplot')+
-  # Plot cashflow ####
+# Plot cashflow ####
 plot_cashflow(mcSimulation_object = mcSimulation_results_withDrought, 
               cashflow_var_name = c("Cashflow_decision_drip", "Cashflow_decision_surface"),
               x_axis_name = "Years with intervention",
@@ -78,5 +78,22 @@ plot_cashflow(mcSimulation_object = mcSimulation_results_withDrought,
               color_25_75 = "purple4", color_5_95 ="purple2",
               color_median = "red", 
               facet_labels = c("Drip irrigation", "Surface irrigation"))
-  
+# Compound drip irrigation
+compound_figure(model = irrigation_model_function_withDrought, 
+                input_table = input_table, 
+                decision_var_name = "Drip_NPV",
+                cashflow_var_name = "Cashflow_decision_drip",
+                model_runs = 1e2, 
+                distribution_method = 'smooth_simple_overlay',
+                labels("Drip Irrigation"))
+
+#compound surface irrigation
+
+compound_figure(model = irrigation_model_function_withDrought, 
+                  input_table = input_table, 
+                  decision_var_name = "Surf_NPV",
+                  cashflow_var_name = "Cashflow_decision_surface",
+                  model_runs = 1e2, 
+                  distribution_method = 'smooth_simple_overlay',
+                  labels("Surface Irrigation"))  
   
