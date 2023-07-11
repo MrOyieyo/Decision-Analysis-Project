@@ -2,6 +2,10 @@
 library(readr)
 library(decisionSupport)
 
+# Estimates table
+input_table<-read.csv("Estimates.csv")
+View(input_table)
+
 # Model function WITH DROUGHT ####
 irrigation_model_function_withDrought<-function(x){
   
@@ -79,4 +83,21 @@ plot_cashflow(mcSimulation_object = mcSimulation_results_withDrought,
               color_median = "red", 
               facet_labels = c("Drip irrigation", "Surface irrigation"))
   
-  
+
+# Compound drip irrigation
+compound_figure(model = irrigation_model_function_withDrought,
+                input_table = input_table,
+                decision_var_name = "Drip_NPV",
+                cashflow_var_name = "Cashflow_decision_drip",
+                model_runs = 1e2,
+                distribution_method = 'smooth_simple_overlay',
+                labels("Drip Irrigation"))
+
+#compound surface irrigation
+compound_figure(model = irrigation_model_function_withDrought,
+                input_table = input_table,
+                decision_var_name = "Surf_NPV",
+                cashflow_var_name = "Cashflow_decision_surface",
+                model_runs = 1e2,
+                distribution_method = 'smooth_simple_overlay',
+                labels("Surface Irrigation"))
