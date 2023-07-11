@@ -46,7 +46,8 @@ irrigation_model_function_withoutDrought<-function(x){
         +Surface_Management+Surface_All_other_incomes}
       
       # Costs ####
-      Overallcosts<- Surface_MaintenanceCost
+      Surface_Establishmentcost<-c(Surface_Establishmentcost,0,0,0,0)
+      Overallcosts<- Surface_MaintenanceCost+Surface_Establishmentcost
       
       # Results ####
       net_benefits <- Profits - Overallcosts
@@ -142,7 +143,8 @@ irrigation_model_function_withDrought<-function(x){
         +Surface_Management+Surface_All_other_incomes}
       
       # Costs ####
-      Overallcosts<- Surface_MaintenanceCost
+      Surface_Establishmentcost<-c(Surface_Establishmentcost,0,0,0,0)
+      Overallcosts<- Surface_MaintenanceCost+Surface_Establishmentcost
       
       # Results ####
       net_benefits <- Profits - Overallcosts
