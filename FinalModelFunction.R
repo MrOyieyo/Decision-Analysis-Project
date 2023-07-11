@@ -10,7 +10,7 @@ View(input_table)
 irrigation_model_function_withoutDrought<-function(x){
   
   # calculate drought risks: impact the implementation of drought ####
-  droughtEvent <-chance_event(Drought_Event, 0, 0, n = 1)
+  droughtEvent <-chance_event(Drought_Event, 0, 0, n=0)
   
   
   #  Intervention ####
@@ -22,6 +22,7 @@ irrigation_model_function_withoutDrought<-function(x){
       Profits<-vv(Drip_Yield,Var_CV,n_years)*Marketvalue+Drip_Management+Drip_All_other_incomes
       
       # Costs ####
+      Drip_Establishmentcost<-c(Drip_Establishmentcost,0,0,0,0)
       Overallcosts<- Drip_Establishmentcost
       
       # Results ####
@@ -117,6 +118,7 @@ irrigation_model_function_withDrought<-function(x){
       Profits<-vv(Drip_Yield,Var_CV,n_years)*Marketvalue+Drip_Management+Drip_All_other_incomes
       
       # Costs ####
+      Drip_Establishmentcost<-c(Drip_Establishmentcost,0,0,0,0)
       Overallcosts<- Drip_Establishmentcost
       
       # Results ####

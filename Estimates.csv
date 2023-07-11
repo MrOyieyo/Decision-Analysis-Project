@@ -10,7 +10,7 @@ Surface_All_other_incomes,10,NA,23,posnorm,All other earnings(ksh),"Amount earne
 Surface_Establishmentcost,10,NA,20,posnorm,Installationcost(ksh), Cost of installing the project
 Surface_MaintenanceCost,4,NA,10,posnorm,Maintenance cost(Ksh),Cost of project maintainance
 Marketvalue,5,NA,5,const,Price (ksh/kg),Market price per KG of maize grain
-discount_rate,1,NA,5,posnorm,NA,Discount rate (%)
+discount_rate,8,NA,12,posnorm,NA,Discount rate (%)
 Drought_Event,0.1,NA,0.3,tnorm_0_1,,Risk of drought
 Drought_Discount,0.1,NA,0.2,posnorm,NA,losses due to drought
 Var_CV,5.0,NA,20.0,posnorm,NA, coeff. Variation
