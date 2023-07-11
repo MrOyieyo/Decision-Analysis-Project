@@ -93,15 +93,20 @@ plot_cashflow(mcSimulation_object = mcSimulation_results_withoutDrought,
               facet_labels = c("Drip irrigation", "Surface irrigation"))
 
 
-# Compound 
+# Compound for surface irrigation
 compound_figure(model = irrigation_model_function_withoutDrought, 
                 input_table = input_table, 
                 decision_var_name = "Surf_NPV",
                 cashflow_var_name = "Cashflow_decision_surface",
                 model_runs = 1e2, 
+                distribution_method = 'smooth_simple_overlay')+
+  # compound for drip irrigation
+  compound_figure(model = irrigation_model_function_withoutDrought, 
+                input_table = input_table, 
+                decision_var_name = "Drip_NPV",
+                cashflow_var_name = "Cashflow_decision_drip",
+                model_runs = 1e2, 
                 distribution_method = 'smooth_simple_overlay')
-
-
 
 # Model function WITH DROUGHT ####
 irrigation_model_function_withDrought<-function(x){
@@ -161,7 +166,7 @@ irrigation_model_function_withDrought<-function(x){
               Surf_NPV = NPV_n_interv,
               NPV_decision_do = NPV_interv - NPV_n_interv,
               Cashflow_decision_drip = result_drip,
-              Cashfolw_decision_surface = result_surface))}
+              Cashflow_decision_surface = result_surface))}
 
 mcSimulation_results_withDrought <- decisionSupport::mcSimulation(
   estimate = decisionSupport::estimate_read_csv("Estimates.csv"),
@@ -182,7 +187,7 @@ decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_w
   
 # Plot cashflow ####
 plot_cashflow(mcSimulation_object = mcSimulation_results_withDrought, 
-              cashflow_var_name = c("Cashflow_decision_drip", "Cashfolw_decision_surface"),
+              cashflow_var_name = c("Cashflow_decision_drip", "Cashflow_decision_surface"),
               x_axis_name = "Years with intervention",
               y_axis_name = "Annual cashflow in Ksh",
               color_25_75 = "purple4", color_5_95 ="purple2",
@@ -190,10 +195,17 @@ plot_cashflow(mcSimulation_object = mcSimulation_results_withDrought,
               facet_labels = c("Drip irrigation", "Surface irrigation"))
 
 
-# Compound 
+# Compound drip irrigation
 compound_figure(model = irrigation_model_function_withDrought, 
                 input_table = input_table, 
                 decision_var_name = "Drip_NPV",
                 cashflow_var_name = "Cashflow_decision_drip",
+                model_runs = 1e2, 
+                distribution_method = 'smooth_simple_overlay')+
+  #compound surface irrigation
+  compound_figure(model = irrigation_model_function_withDrought, 
+                input_table = input_table, 
+                decision_var_name = "Surf_NPV",
+                cashflow_var_name = "Cashflow_decision_surface",
                 model_runs = 1e2, 
                 distribution_method = 'smooth_simple_overlay')
