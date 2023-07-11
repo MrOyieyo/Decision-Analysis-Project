@@ -23,7 +23,7 @@ irrigation_model_function_withoutDrought<-function(x){
       
       # Costs ####
       Drip_Establishmentcost<-c(Drip_Establishmentcost,0,0,0,0)
-      Overallcosts<- Drip_Establishmentcost
+      Overallcosts<- Drip_Establishmentcost+Drip_MaintenanceCost
       
       # Results ####
       net_benefits <- Profits - Overallcosts
@@ -119,7 +119,7 @@ irrigation_model_function_withDrought<-function(x){
       
       # Costs ####
       Drip_Establishmentcost<-c(Drip_Establishmentcost,0,0,0,0)
-      Overallcosts<- Drip_Establishmentcost
+      Overallcosts<- Drip_Establishmentcost+Drip_MaintenanceCost
       
       # Results ####
       net_benefits <- Profits - Overallcosts
