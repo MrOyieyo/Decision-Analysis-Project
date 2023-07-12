@@ -1,0 +1,181 @@
+---
+title: "Drip Irrigation Adoption in Mwea Scheme,Kenya"
+subtitle: "A decision support model for government of Kenya, using the decisionSupport R package by Lüdeling et al."
+author: "Adrian, Apana, Silas, Steven"
+#output: 
+date: "`r Sys.Date()`"
+#bibliography: project_packages.bib
+#editor_options: 
+  #markdown: 
+    #wrap: 72
+---
+#Introduction                  
+Climate change, demand for more reliable food sources and continuous depletion of the natural resources due to anthropogenic factors has become a point of concern.
+Kenya has great potential for underground water exploration for irrigation to increase food production and liberate from seasonal agriculture dependency.
+Around 80% of the national irrigation schemes are still under use of the obsolete irrigation methods such as farrow irrigation. Water use and distribution then has been a problem and efficient water management should be one of the solution strategies.
+
+
+
+#Objective of the Poject. 
+Efficient Water use and management.This is the core for this project. Adoption of drip irrigation as a way to reduce the amount of water use and ensure consistence agricultural production.
+The authors therefore needed to know the scope and the adoption of this project across the country.
+
+
+#Method for the Analysis.
+The project was fully build up from problem determination,to key stakeholders and decision makers evaluation, data generation , analysis to finial decision making outcome using Rprogramm packages.
+
+#Decision Maker
+Government of Kenya is the targeted implementer of the project. All the policies we hoped to be considered are designed and and amended by the government. 
+
+#The Project`s Stakeholders 
+ The individual/group who has interests/can affect/ is affected by the decision.In the scheme there are many stakeholders and the majority was sampled to present that category.Government of Kenya, National Irrigation Authority as examples.
+
+Based on the STRATEGIC PLAN (2019-2023) by National Irrigation Authority, 14 stakeholders were considered.
+For each of them, defined : 
+      -Roles
+      -Major one
+      -Rated : 
+              -Capital availability
+              -Influence
+              -Expertise
+
+These were the core basis of categorizing the stakeholders and their influence to the whole project.
+
+In the purpose of analysis and defining most important stakeholders and the decision maker
+Plot #capital availability, #expertise,  #influence.
+
+<<<<<<< HEAD
+```{r package-installation, echo=TRUE}
+library(ggplot2)
+library(ggrepel)
+stakeholder<-read.csv("Stakeholder Management data.csv")
+
+stakeholder<-Stakeholder_Management_data <- read.csv("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Dripprojectdata.csv") 
+                                                       col_types = c("text", "text", "text", 
+                                                                     "numeric", "numeric", "numeric", 
+                                                                     "numeric", "numeric")
+
+#View(Stakeholder_Management_data)
+
+ggplot(data = stakeholder, aes(x = Expertise, 
+                               y = Capital_Availability, 
+                               label = Stakeholders, 
+                               color = Influence))+  
+  geom_point() +
+  xlab("Expertise") +
+  
+  #label names of stakeholders and expand space to show full names
+  scale_x_continuous(labels = paste(seq(0, 5, by = 1)), 
+                     breaks = seq(0, 5, by = 1), 
+                     limits = c(0, 5),
+                     expand = c(0, 1)) +
+  scale_y_continuous(labels = paste(seq(0, 5, by = 1)), 
+                     breaks = seq(0, 5, by = 1), 
+                     limits = c(0, 5),
+                     expand = c(0, 1)) +
+  theme(plot.margin = unit(c(1, 1, 1, 1), "cm")) +
+  theme(legend.position = "none") +
+  
+  # Create line to categorize stakeholders
+  geom_hline(yintercept=2.5, color="white", size=2) +
+  geom_vline(xintercept=2.5, color="white", size=2) +
+  
+  # Show all names of overlapped values
+  geom_text_repel(box.padding = 0.3, max.overlaps = Inf, size = 3) +
+  annotate("text", label = "Potential core experts",
+           x = 4.5, y = 3.5, size = 5, color = "grey48") +
+  annotate("text", label = "Resource persons",
+           x = 4.5, y = 0.25, size = 5, color = "grey48")
+
+```
+Government, NGO, irrigation authority = most important (as expected) 
+BUT stakeholders with the strongest influence aren’t the best experts and don’t have the biggest available capital (ministry, etc.)
+
+#Project Evaluation
+Before investing into the project, precalculation  of the viability of the model needed to be determined. Project installation and setup cost against profit generation has to be evaluated.
+
+
+```{r package-installation, echo=TRUE}
+library(imager)
+Conceptual_model <- load.image("Conceptual model.png")
+plot(Conceptual_model)
+
+```
+Rain fed irrigation in Kenya foloow a simple evaluation process which is rarely even undertaken by the farmers.
+
+```{r package-installation, echo=TRUE}
+library(imager)
+evaluationframe <- load.image("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/current_evaluation.png")
+plot(evaluationframe,axes = FALSE)
+
+```
+#Conceptual model
+Framework binds to contribution effect of all the uncertainities, benefits and negatives consequences.
+looking at both short term and long term benefits and general cost for the project.
+Government always looks at the social economic value and the viability of the project before making decision to adopt and allocate resources.
+The conceptual framework below shows the relationship between different variables and their relationship to the overral outcome of the project.
+Short term effect of the project such as increased yield and production savings are at the farm basis in seasons of production. Longterm effects are the cumulative benefits that the community and the country as whole will benefit. this include such as reduction in the amount of water use which eventually leads more generation  of electricity from the waterfalls.
+Apart from the benefit of the drip irrigation there is cost of the project implementation and maintenance. The different result to Present Net Value.
+Surface irrigation by considering the benefit and the cost results to NPV . These will form our basic parts of montecarlo Evaluation process.
+
+
+```{r package-installation, echo=TRUE}
+
+library(imager)
+Conceptual_model <- load.image("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/Conceptual_model.png")
+plot(Conceptual_model,axes = FALSE)
+#
+```
+The general flow of the evaluation of the model benefit is as below.
+```{r package-installation, echo=TRUE}
+model_benefit_flow <- load.image("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/model_flow.png")
+plot(model_benefit_flow, axes = FALSE)
+
+library(DiagrammeR)
+mermaid(diagram = "graph LR
+    Y(Yield)-->Ag(AgricIncome); linkStyle 0 stroke: blue, stroke-width:1.5px
+    Mg(Management)-->Ag; linkStyle 1 stroke: blue, stroke-width:1.5px
+    WB(Watersource)-->Ex(ExternalIncome); linkStyle 2 stroke: blue, stroke-width:1.5px
+    Ag-->TP(TotalProfit); linkStyle 3 stroke:blue, stroke-width: 1.5px
+    Ex-->TP; linkStyle 4 stroke: blue, stroke-width: 1.5px
+    In(InstallCost)-->TC(Total_Cost); linkStyle 5 stroke: red, stroke-width:1.5px
+    MngtC(ManagementCost)-->TC; linkStyle 6 stroke: red, stroke-width: 1.5px
+    TP-->NP(NetProfit); linkStyle 7 stroke: blue, stroke-width: 1.5px
+    TC-->NP; linkStyle 8 stroke: red, stroke-width: 1.5px")
+
+
+```
+
+#Impact Pathway
+```{r package-installation, echo=TRUE}
+library(igraph)
+SurfaceIrr_path<- graph.formula(SurfaceIrr-+Yield,
+                               SurfaceIrr-+Incomes,
+                               SurfaceIrr-+Management,
+                               MaintenanceCost-+SurfaceIrr,
+                               MaintenanceCost-+TotalCost,
+                               Incomes-+TotalBenefits,
+                               Management-+TotalBenefits,
+                               Yields-+TotalBenefits,
+                               TotalBenefits-+CurrentSituationOutcome,
+                               TotalCost-+CurrentSituationOutcome)
+plot(SurfaceIrr_path)
+
+```
+## What next
+We hope to come up with estimate data that will give value to the uncertainties linked to our project using McSimulation. 
+Building the model with Plot of the impact pathway and calibration of the data will consequentially take place.
+
+Setseed - to set the run of codes should start.
+                   
+
+Presentation 
+                   #THANK YOU
+
+```{r package-installation, echo=TRUE}
+
+
+```
+
+
+
