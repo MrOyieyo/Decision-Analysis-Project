@@ -18,7 +18,8 @@ irrigation_model_function_withoutDrought<-function(x){
     if (decision_drip_irrigation){
       
       # Profits ####
-      Profits<-vv(Drip_Yield,Var_CV,n_years)*Marketvalue+Drip_Management+Drip_All_other_incomes
+      Profits<-vv(Drip_Yield,Var_CV,n_years)*Marketvalue+
+        Drip_Management+Drip_All_other_incomes
       
       # Costs ####
       Drip_Establishmentcost<-c(Drip_Establishmentcost,0,0,0,0)
