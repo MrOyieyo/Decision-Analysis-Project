@@ -11,10 +11,10 @@ watermanagement_stakeholder <- read.csv("Stakeholders/Stakeholder Management dat
 View(watermanagement_stakeholder)
 
 #ploting the stakeholders data
-ggplot(watermanagement_stakeholder, aes(x = Influence,
+ggplot(watermanagement_stakeholder, aes(x = Expertise,
                                         y = Capital_Availability,
                                         label = Stakeholders,
-                                        color = Major)) +
+                                        color = Influence)) +
   geom_point() +
   xlab("Adoption Influence") +
   
@@ -31,8 +31,7 @@ ggplot(watermanagement_stakeholder, aes(x = Influence,
                      expand = c(0, 1)) +
                        
   theme(plot.margin = unit(c(1, 1, 1, 1), "cm")) +
-  theme(legend.position = "none") +
-  
+
 #create line to categorize stakeholders
   geom_hline(yintercept=2.5, color="yellow", linewidth=1) +
   geom_vline(xintercept=2.5, color="yellow", linewidth=1) +
