@@ -46,9 +46,9 @@ Plot #capital availability, #expertise,  #influence.
 
 <<<<<<< HEAD
 ```{r package-installation, echo=TRUE}
-=======
+library(ggplot2)
+library(ggrepel)
 stakeholder<-read.csv("Stakeholder Management data.csv")
->>>>>>> b7060710e75d5fcf969653bd8e099a9e66bc79c4
 
 stakeholder<-Stakeholder_Management_data <- read.csv("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Dripprojectdata.csv") 
                                                        col_types = c("text", "text", "text", 
@@ -96,24 +96,10 @@ Before investing into the project, precalculation  of the viability of the model
 
 
 ```{r package-installation, echo=TRUE}
-
-
-<<<<<<< HEAD
-=======
-# Conceptual model
-
-Developing this framework opt to include at least most of all the uncertainties, benefits and negative consequences likely to be encountered.
-We looked at both short term and long term benefits and general cost for the project.
-Government always looks at the social economic value and the viability of the project before making decision to adopt and allocate resources.
-
-## Slide with R Output
-
-```{r}
 library(imager)
 Conceptual_model <- load.image("Conceptual model.png")
 plot(Conceptual_model)
 
->>>>>>> b7060710e75d5fcf969653bd8e099a9e66bc79c4
 ```
 Rain fed irrigation in Kenya foloow a simple evaluation process which is rarely even undertaken by the farmers.
 
@@ -176,7 +162,6 @@ SurfaceIrr_path<- graph.formula(SurfaceIrr-+Yield,
 plot(SurfaceIrr_path)
 
 ```
-<<<<<<< HEAD
 ## What next
 We hope to come up with estimate data that will give value to the uncertainties linked to our project using McSimulation. 
 Building the model with Plot of the impact pathway and calibration of the data will consequentially take place.
@@ -194,217 +179,3 @@ Presentation
 
 
 
-=======
-
-## Final Model building 
-## Without drought
-### Model function 
-
-```{r}
-# Imports ####
-library(readr)
-library(decisionSupport)
-
-# Estimates table
-input_table<-read_csv("Estimates.csv")
-View(input_table)
-
-# Model function WITHOUT DROUGHT ####
-irrigation_model_function_withoutDrought<-function(x){
-  
-  # calculate drought risks: impact the implementation of drought ####
-  droughtEvent <-chance_event(Drought_Event, 0, 0, n = 1)
-  
-  
-  #  Intervention ####
-  for (decision_drip_irrigation in c(FALSE,TRUE)){
-    
-    if (decision_drip_irrigation){
-      
-      # Profits ####
-      Profits<-vv(Drip_Yield,Var_CV,n_years)*Marketvalue+Drip_Management+Drip_All_other_incomes
-      
-      # Costs ####
-      Overallcosts<- Drip_Establishmentcost
-      
-      # Results ####
-      net_benefits <- Profits - Overallcosts
-      result_drip <- net_benefits
-    }
-    
-    else{
-      
-      # Profits ####
-      # Drought
-      if (droughtEvent){
-        Profits<-vv(Surface_Yield,Var_CV,n_years)*
-          (1-vv(Drought_Discount, Var_CV,n_years))*
-          Marketvalue+Surface_Management+Surface_All_other_incomes
-      }
-      
-      # No drought
-      else{
-        Profits<-vv(Surface_Yield,Var_CV,n_years)*Marketvalue
-        +Surface_Management+Surface_All_other_incomes}
-      
-      # Costs ####
-      Overallcosts<- Surface_MaintenanceCost
-      
-      # Results ####
-      net_benefits <- Profits - Overallcosts
-      result_surface <- net_benefits}
-    
-  }   #close intervention loop bracket
-  NPV_interv <-
-    discount(result_drip, discount_rate, calculate_NPV = TRUE)
-  
-  NPV_n_interv <-
-    discount(result_surface, discount_rate, calculate_NPV = TRUE)
-  
-  return(list(Drip_NPV = NPV_interv,
-              Surf_NPV = NPV_n_interv,
-              NPV_decision_do = NPV_interv - NPV_n_interv,
-              Cashflow_decision_drip = result_drip,
-              Cashflow_decision_surface = result_surface))}
-```
-### Mc Simulation
-```{r}
-mcSimulation_results_withoutDrought <- decisionSupport::mcSimulation(
-  estimate = decisionSupport::estimate_read_csv("Estimates.csv"),
-  model_function = irrigation_model_function_withoutDrought,
-  numberOfModelRuns = 200,
-  functionSyntax = "plainNames"
-)
-```
-### Plot distribution
-```{r}
-# Plot distrbution ####
-decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_withoutDrought, 
-                                    vars = c("Drip_NPV","Surf_NPV"),
-                                    method = 'smooth_simple_overlay', 
-                                    base_size = 7)+
-decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_withoutDrought, 
-                                    vars = c("Drip_NPV",
-                                             "Surf_NPV"),
-                                    method = 'boxplot')+
-
-# Plot cashflow ####
-plot_cashflow(mcSimulation_object = mcSimulation_results_withoutDrought, 
-              cashflow_var_name = c("Cashflow_decision_drip", "Cashflow_decision_surface"),
-              x_axis_name = "Years with intervention",
-              y_axis_name = "Annual cashflow in KSh",
-              color_25_75 = "purple4", color_5_95 ="purple2",
-              color_median = "red", 
-              facet_labels = c("Drip irrigation", "Surface irrigation"))
-
-
-# Compound 
-compound_figure(model = irrigation_model_function_withoutDrought, 
-                input_table = input_table, 
-                decision_var_name = "Surf_NPV",
-                cashflow_var_name = "Cashflow_decision_surface",
-                model_runs = 1e2, 
-                distribution_method = 'smooth_simple_overlay')
-``` 
->>>>>>> b7060710e75d5fcf969653bd8e099a9e66bc79c4
-
-## With drought
-```{r}
-irrigation_model_function_withDrought<-function(x){
-  
-  # calculate drought risks: impact the implementation of drought ####
-  droughtEvent <-chance_event(Drought_Event, 1, 0, n = 1)
-  
-  
-  #  Intervention ####
-  for (decision_drip_irrigation in c(FALSE,TRUE)){
-    
-    if (decision_drip_irrigation){
-      
-      # Profits ####
-      Profits<-vv(Drip_Yield,Var_CV,n_years)*Marketvalue+Drip_Management+Drip_All_other_incomes
-      
-      # Costs ####
-      Overallcosts<- Drip_Establishmentcost
-      
-      # Results ####
-      net_benefits <- Profits - Overallcosts
-      result_drip <- net_benefits
-    }
-    
-    else{
-      
-      # Profits ####
-      # Drought
-      if (droughtEvent){
-        Profits<-vv(Surface_Yield,Var_CV,n_years)*
-          (1-vv(Drought_Discount, Var_CV,n_years))*
-          Marketvalue+Surface_Management+Surface_All_other_incomes
-      }
-      
-      # No drought
-      else{
-        Profits<-vv(Surface_Yield,Var_CV,n_years)*Marketvalue
-        +Surface_Management+Surface_All_other_incomes}
-      
-      # Costs ####
-      Overallcosts<- Surface_MaintenanceCost
-      
-      # Results ####
-      net_benefits <- Profits - Overallcosts
-      result_surface <- net_benefits}
-    
-  }   #close intervention loop bracket
-  NPV_interv <-
-    discount(result_drip, discount_rate, calculate_NPV = TRUE)
-  
-  NPV_n_interv <-
-    discount(result_surface, discount_rate, calculate_NPV = TRUE)
-  
-  return(list(Drip_NPV = NPV_interv,
-              Surf_NPV = NPV_n_interv,
-              NPV_decision_do = NPV_interv - NPV_n_interv,
-              Cashflow_decision_drip = result_drip,
-              Cashfolw_decision_surface = result_surface))}
-```
-
-### Mc Simulation
-```{r}
-mcSimulation_results_withDrought <- decisionSupport::mcSimulation(
-  estimate = decisionSupport::estimate_read_csv("Estimates.csv"),
-  model_function = irrigation_model_function_withDrought,
-  numberOfModelRuns = 200,
-  functionSyntax = "plainNames"
-)
-
-```
-
-# Plot distrbution ####
-```{r}
-decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_withDrought, 
-                                    vars = c("Drip_NPV","Surf_NPV"),
-                                    method = 'smooth_simple_overlay', 
-                                    base_size = 7)+
-decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_withDrought, 
-                                      vars = c("Drip_NPV",
-                                               "Surf_NPV"),
-                                      method = 'boxplot')+
-  
-# Plot cashflow ####
-plot_cashflow(mcSimulation_object = mcSimulation_results_withDrought, 
-              cashflow_var_name = c("Cashflow_decision_drip", "Cashfolw_decision_surface"),
-              x_axis_name = "Years with intervention",
-              y_axis_name = "Annual cashflow in Ksh",
-              color_25_75 = "purple4", color_5_95 ="purple2",
-              color_median = "red", 
-              facet_labels = c("Drip irrigation", "Surface irrigation"))
-
-
-# Compound 
-compound_figure(model = irrigation_model_function_withDrought, 
-                input_table = input_table, 
-                decision_var_name = "Drip_NPV",
-                cashflow_var_name = "Cashflow_decision_drip",
-                model_runs = 1e2, 
-                distribution_method = 'smooth_simple_overlay')
-```
