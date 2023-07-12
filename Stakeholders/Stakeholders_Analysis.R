@@ -1,6 +1,6 @@
 
 #Ploting stakeholder analysis
-watermanagement_stakeholder <- read.csv("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Dripprojectdata.csv")
+watermanagement_stakeholder <- read.csv("Stakeholders/Stakeholder Management data.csv")
 View(watermanagement_stakeholder)
 
 library(ggplot2)
@@ -13,7 +13,7 @@ ggplot(watermanagement_stakeholder, aes(x = Influence,
                                         y = Capital_Availability,
                                         label = Stakeholders,
                                         color = Major)) +
-  geom_point(aes(shape = Entity)) +
+  geom_point() +
   xlab("Adoption Influence") +
   
   
