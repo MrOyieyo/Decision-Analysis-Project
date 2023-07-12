@@ -12,8 +12,8 @@ library(ggplot2)
 library(readr)
 
 
-#benefits of the project to fermers
-KSH<-142.50 #1 Euro to kenya curency (ksh) 
+#benefits of the project to farmers
+KSH<-142.50 #1 Euro to Kenya currency (ksh) 
 
 yield<-80330 #at 14% MC, kg/ha
 fertil<- 200*KSH*10 #amount fertilizer saved by the technology for 10ha
@@ -26,7 +26,7 @@ bn_farmers <- yield+fertil+water_manage+seed+weed_manag # benefit to farmers per
 #benefit to public
 food_n <- 2000*KSH #benefit for nutrition per season
 electric<- 5230*KSH #benefit kplc get from saving the water in a season
-tourism <- 1320*KSH # benefit to toursim sector per season
+tourism <- 1320*KSH # benefit to tourism sector per season
 bn_public <- food_n+electric+tourism
 
 
