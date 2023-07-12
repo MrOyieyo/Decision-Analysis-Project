@@ -1,13 +1,15 @@
-
-#Ploting stakeholder analysis
-watermanagement_stakeholder <- read.csv("Stakeholders/Stakeholder Management data.csv")
-View(watermanagement_stakeholder)
-
+# Imports ####
 library(ggplot2)
 library(ggrepel)
 library(ggthemes)
 library(readxl)
 library(dplyr)
+
+
+#Ploting stakeholder analysis
+watermanagement_stakeholder <- read.csv("Stakeholders/Stakeholder Management data.csv")
+View(watermanagement_stakeholder)
+
 #ploting the stakeholders data
 ggplot(watermanagement_stakeholder, aes(x = Influence,
                                         y = Capital_Availability,
