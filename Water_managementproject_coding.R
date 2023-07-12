@@ -32,8 +32,8 @@ ggplot(watermanagement_stakeholder, aes(x = Influence,
   theme(legend.position = "none") +
   
 #create line to categorize stakeholders
-  geom_hline(yintercept=2.0, color="yellow", linewidth=3) +
-  geom_vline(xintercept=2.0, color="yellow", linewidth=3) +
+  geom_hline(yintercept=2.5, color="yellow", linewidth=1) +
+  geom_vline(xintercept=2.5, color="yellow", linewidth=1) +
     
 # Show all names of overlapped values
   geom_text_repel(box.padding = 0.3, max.overlaps = Inf, size = 3) +
@@ -187,51 +187,55 @@ plot_distributions(mcSimulation_object = SurfaceIrr_mc_simulation,
                    old_names = "final_result",
                    new_names = "Outcome distribution for profits")
 
+###########################################################################
+# Imports ####
+library(readr)
+library(decisionSupport)
 
-#Combining the intervention project and the baseline
 # Estimates table
-url_table<-"https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Estimates.csv"
-input_table<- read.csv(url(url_table))
-View(input_table)
+input_table<-read.csv("Estimates.csv")
+#View(input_table)
 
 # Model function ####
 irrigation_model_function<-function(x, varnames){
   
   # calculate drought risks: impact the implementation of drought ####
-  droughtEvent <-chance_event(Drought, 1, 0, n = 1)
+  droughtEvent <-chance_event(Drought_Event, 1, 0, n = 1)
+  
   
   #  Intervention ####
-  for (decision_intervention_strips in c(FALSE,TRUE)){
+  for (decision_drip_irrigation in c(FALSE,TRUE)){
     
-    if (decision_intervention_strips){
+    if (decision_drip_irrigation){
       
       # Profits ####
-      Profits<-Drip_Yield*Marketvalue+Drip_Management
+      Profits<-vv(Drip_Yield,Var_CV,n_years)*Marketvalue+Drip_Management+Drip_All_other_incomes
       
       # Costs ####
-      Overallcosts<- Drip_Establishmentcost + Drip_Managementcost
+      Overallcosts<- Drip_Establishmentcost
       
       # Results ####
       net_benefits <- Profits - Overallcosts
       result_drip <- net_benefits
-      
-    } 
+    }
+    
     else{
       
       # Profits ####
       # Drought
       if (droughtEvent){
         Profits<-vv(Surface_Yield,Var_CV,n_years)*
-          vv(Drought_Discount, Var_CV,n_years)*
-          Marketvalue+Surface_Management}
+          (1-vv(Drought_Discount, Var_CV,n_years))*
+          Marketvalue+Surface_Management+Surface_All_other_incomes
+      }
       
       # No drought
       else{
-        Profits<-vv(Surface_Yield,Var_CV,n_years)*Marketvalue+Surface_Management}
+        Profits<-vv(Surface_Yield,Var_CV,n_years)*Marketvalue
+        +Surface_Management+Surface_All_other_incomes}
       
       # Costs ####
-      # Costs ####
-      Overallcosts<- Surface_Maintenancecost
+      Overallcosts<- Surface_MaintenanceCost
       
       # Results ####
       net_benefits <- Profits - Overallcosts
@@ -244,31 +248,35 @@ irrigation_model_function<-function(x, varnames){
   NPV_n_interv <-
     discount(result_surface, discount_rate, calculate_NPV = TRUE)
   
-  # Beware, if you do not name your outputs 
-  # (left-hand side of the equal sign) in the return section, 
-  # the variables will be called output_1, _2, etc.
-  
   return(list(Drip_NPV = NPV_interv,
               Surf_NPV = NPV_n_interv,
               NPV_decision_do = NPV_interv - NPV_n_interv,
               Cashflow_decision_do = result_drip - result_surface))}
 
 mcSimulation_results <- decisionSupport::mcSimulation(
-  estimate = decisionSupport::estimate_read_csv("https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Estimates.csv"),
+  estimate = decisionSupport::estimate_read_csv("Estimates.csv"),
   model_function = irrigation_model_function,
   numberOfModelRuns = 200,
   functionSyntax = "plainNames"
 )
-
+#par(mfrow = c(1, 1))
 # Plot distrbution ####
 decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results, 
                                     vars = c("Drip_NPV","Surf_NPV"),
-                                    method = 'smooth_simple_overlay','boxplot', 
-                                    base_size = 7)
-
-
+                                    method ='smooth_simple_overlay', 
+                                    base_size = 7)+
 decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results, 
-                                    vars = c("Drip_NPV",
-                                             "Surf_NPV"),
-                                    method = 'boxplot')
+                                      vars = c("Drip_NPV",
+                                               "Surf_NPV"),
+                                      method = 'boxplot')
+
+
+#######################################################
+#plot_distributions(mcSimulation_object = mcSimulation_results,
+                   #vars = c("Drip_NPV","Surf_NPV"),
+                   #method = "boxplot_density",
+                   #old_names = "final_result",
+                   #base_size = 7,
+                   #new_names = "Outcome distribution for profits")
+
 
