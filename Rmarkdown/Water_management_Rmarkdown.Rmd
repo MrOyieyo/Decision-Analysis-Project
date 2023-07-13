@@ -1,6 +1,6 @@
 ---
 title: My R Markdown Document
-author: John Doe
+author: Adrian, Apana, Silas, Steven
 date: 2023-07-12
 output: html_document
 ---
