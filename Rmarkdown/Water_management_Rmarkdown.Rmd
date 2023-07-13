@@ -35,7 +35,6 @@ library(imager)
 library(DiagrammeR)
 library(readr)
 library(igraph)
-library(tibble)
 ```
 
 
