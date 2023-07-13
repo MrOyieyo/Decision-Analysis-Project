@@ -126,10 +126,9 @@ Apart from the benefit of the drip irrigation there is cost of the project imple
 
 Surface irrigation by considering the benefit and the cost results to NPV . These will form our basic parts of Monte Carlo Evaluation process.
 
-```{r echo=FALSE}
-
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/Conceptual%20model.png?raw=true")
-```
+<img src="../Figures/Conceptual_model.png" 
+        alt="Unable to load content" 
+        style="display: block; margin: 0 auto" />
 
 The general flow of the evaluation of the project model is as below.
 
@@ -472,27 +471,19 @@ compound_figure(model = irrigation_model_function_withoutDrought,
 ````
 # Analysis and Result
 
-```{r echo=FALSE}
-#with drought
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/with%20drought%20-%20drip%20compound%20figure.png?raw=true")
-# explanation of the graphs and pattern flow.
-
-
-#surface irrigation
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/with%20drougth%20-%20surface%20irrigation%20compounding%20figure.png?raw=true")
-
-
-```
+<img src="../Figures/with_drought_drip_compound_figure.png" 
+        alt="Unable to load content" 
+        style="display: block; margin: 0 auto" />
+        
+<img src="../Figures/with_drougth_surface_irrigation_compounding_figure.png" 
+        alt="Unable to load content" 
+        style="display: block; margin: 0 auto" />
 
 # Learning point
-
-
 We hope to come up with estimate data that will give value to the uncertainties linked to our project using McSimulation. 
 Building the model with Plot of the impact pathway and calibration of the data will consequentially take place.
 
 Setseed - to set the run of codes should start.
-                   
-
 
 # Reference
 ```{r add_R_bib, include=FALSE}
@@ -506,5 +497,6 @@ knitr::write_bib(c(.packages(),
 ```{r echo=FALSE}
 
 ```
-Presentation 
-                   #THANK YOU
+ 
+
+# THANK YOU
