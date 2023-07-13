@@ -331,7 +331,7 @@ decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_w
   decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_withDrought, 
                                       vars = c("Drip_NPV",
                                                "Surf_NPV"),
-                                      method = 'boxplot')+
+                                      method = 'boxplot')
 # Plot cashflow ####
 plot_cashflow(mcSimulation_object = mcSimulation_results_withDrought, 
               cashflow_var_name = c("Cashflow_decision_drip", "Cashflow_decision_surface"),
@@ -441,7 +441,7 @@ decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_w
   decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_withoutDrought, 
                                       vars = c("Drip_NPV",
                                                "Surf_NPV"),
-                                      method = 'boxplot')+
+                                      method = 'boxplot')
   # Plot cashflow ####
 plot_cashflow(mcSimulation_object = mcSimulation_results_withoutDrought, 
               cashflow_var_name = c("Cashflow_decision_drip", "Cashflow_decision_surface"),
