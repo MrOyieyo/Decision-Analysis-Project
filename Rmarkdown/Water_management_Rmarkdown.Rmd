@@ -3,8 +3,6 @@ title: Drip irrigation adoption in MWEA irrigation scheme, Kenya.
 author: Adrian, Apana, Silas, Steven
 date: 2023-07-12
 output: html_document
-bibliography:
-  
 ---
 
 
@@ -13,8 +11,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Introduction                  
-Demand for more reliable food sources, continuous depletion of the natural resources and climate change due to anthropogenic factors have become a point of concern. It is from this background that many governments around the world set up irrigation schemes to enhance food and nutrition security, improve livelihoods#### in rural areas.
+Demand for more reliable food sources, continuous depletion of the natural resources and climate change due to anthropogenic factors have become a point of concern. It is from this background that many governments around the world set up irrigation schemes to enhance food and nutrition security, improve livelihoods in rural areas.
+
 Kenya has great potential to increase food production and get liberated from seasonal agriculture dependency through investing in more water efficient agricultural technologies to improve yields and subsequently rural development.
+
 Around 80% (Strategic-Plan-Final)of the national irrigation schemes are still under surface irrigation system like; farrow, boarder, flood methods of irrigation. This leads to wastage of water resources, depletes ground  Water, uneven distribution then has been a problem and efficient water management should be one of the solution strategies.
 
 
@@ -27,7 +27,7 @@ The authors therefore needed to know the scope and the adoption of this project 
 # Method for the Analysis.
 The project was fully build up from problem determination,to key stakeholders and decision makers evaluation, data generation , analysis to finial decision making outcome using Rprogramm packages.
 
-```{r echo=FALSE}
+```{r echo=FALSE, include=FALSE}
 library(ggplot2)
 library(ggrepel)
 library(ggthemes)
@@ -36,6 +36,7 @@ library(decisionSupport)
 library(imager)
 library(DiagrammeR)
 library(readr)
+library(flextable)
 library(igraph)
 ```
 
@@ -107,10 +108,10 @@ Before investing into the project, precalculation  of the viability of the model
 
 Rain fed irrigation in Kenya follow a simple evaluation process which is rarely even undertaken by the farmers.
 
-```{r echo=FALSE}
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/current_evaluation.png?raw=true")
+<img src="../Figures/current_evaluation.png" 
+        alt="Unable to load content" 
+        style="display: block; margin: 0 auto" />
 
-```
 
 # Conceptual model
 Framework binds to contribution effect of all the uncertainities, benefits and negatives consequences.
@@ -125,7 +126,6 @@ Apart from the benefit of the drip irrigation there is cost of the project imple
 
 Surface irrigation by considering the benefit and the cost results to NPV . These will form our basic parts of Monte Carlo Evaluation process.
 
-
 ```{r echo=FALSE}
 
 knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/Conceptual%20model.png?raw=true")
@@ -133,24 +133,23 @@ knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/b
 
 The general flow of the evaluation of the project model is as below.
 
-```{r echo=FALSE, paged.print=TRUE}
-
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/Impactpath_Rplot.png?raw=true")
-
-```
+<img src="../Figures/Impactpath_Rplot.png" 
+        alt="Unable to load content" 
+        style="display: block; margin: 0 auto" />
 
 # Impact Pathway
-```{r echo=FALSE}
 
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/impact_path_way.png?raw=true")
-```
+<img src="../Figures/impact_path_way.png" 
+        alt="Unable to load content" 
+        style="display: block; margin: 0 auto" />
+
 
 # Estimates
-```{r echo=FALSE}
-urlfile = "https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Estimates.csv" 
-Estimates = read.csv(url(urlfile))
-Estimates
+```{r, echo=FALSE, warning=FALSE}
+flextable(read.csv("../Estimates.csv"))
 ```
+
+
 ## Simple model code
 
 ```{r echo=FALSE}
@@ -475,8 +474,6 @@ compound_figure(model = irrigation_model_function_withoutDrought,
 
 ```{r echo=FALSE}
 #with drought
-("Figures/with%20drought-Rplotdistribution.png")
-
 knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/with%20drought%20-%20drip%20compound%20figure.png?raw=true")
 # explanation of the graphs and pattern flow.
 
