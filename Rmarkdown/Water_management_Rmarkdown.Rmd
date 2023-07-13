@@ -1,8 +1,10 @@
 ---
-title: My R Markdown Document
+title: Drip irrigation adoption in MWEA irrigation scheme, Kenya.
 author: Adrian, Apana, Silas, Steven
 date: 2023-07-12
 output: html_document
+bibliography:
+  
 ---
 
 
@@ -11,9 +13,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Introduction                  
-Climate change, demand for more reliable food sources and continuous depletion of the natural resources due to anthropogenic factors has become a point of concern.
-Kenya has great potential for underground water exploration for irrigation to increase food production and liberate from seasonal agriculture dependency.
-Around 80% of the national irrigation schemes are still under use of the obsolete irrigation methods such as farrow irrigation. Water use and distribution then has been a problem and efficient water management should be one of the solution strategies.
+Demand for more reliable food sources, continuous depletion of the natural resources and climate change due to anthropogenic factors have become a point of concern. It is from this background that many governments around the world set up irrigation schemes to enhance food and nutrition security, improve livelihoods#### in rural areas.
+Kenya has great potential to increase food production and get liberated from seasonal agriculture dependency through investing in more water efficient agricultural technologies to improve yields and subsequently rural development.
+Around 80% (Strategic-Plan-Final)of the national irrigation schemes are still under surface irrigation system like; farrow, boarder, flood methods of irrigation. This leads to wastage of water resources, depletes ground  Water, uneven distribution then has been a problem and efficient water management should be one of the solution strategies.
 
 
 
