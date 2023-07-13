@@ -14,13 +14,8 @@ View(watermanagement_stakeholder)
 ggplot(watermanagement_stakeholder, aes(x = Expertise,
                                         y = Capital_Availability,
                                         label = Stakeholders,
-<<<<<<< HEAD:Water_managementproject_coding.R
-                                        color = influence)) +
-  geom_point(aes(shape = Entity)) +
-=======
                                         color = Influence)) +
   geom_point() +
->>>>>>> 0dece34a90de301283d8fbf29d98de4804ac16ef:Stakeholders/Stakeholders_Analysis.R
   xlab("Adoption Influence") +
   
   
@@ -34,19 +29,20 @@ ggplot(watermanagement_stakeholder, aes(x = Expertise,
                      breaks = seq(0, 5, by = 1), 
                      limits = c(0, 5), 
                      expand = c(0, 1)) +
-                       
+  
   theme(plot.margin = unit(c(1, 1, 1, 1), "cm")) +
-
-#create line to categorize stakeholders
+  
+  #create line to categorize stakeholders
   geom_hline(yintercept=2.5, color="yellow", linewidth=1) +
   geom_vline(xintercept=2.5, color="yellow", linewidth=1) +
-    
-# Show all names of overlapped values
-  geom_text_repel(box.padding = 0.3, max.overlaps = Inf, size = 3) +
+  
+  # Show all names of overlapped values
+  geom_text_repel(box.padding = 0.3, max.overlaps = Inf, size = 3)+
   annotate("text", label = "Priority Stakeholders", 
-           x = 4.5, y = 2.5, size = 7, color = "grey48") +
+           x = 4.5, y = 2.5, size = 5, color = "grey48") +
   annotate("text", label = "Resource persons", 
-           x = 2.5, y = 4.5, size = 7, color = "grey48")
+           x = 2.5, y = 4.5, size = 5, color = "grey48")
+
 
 
 mermaid("graph LR

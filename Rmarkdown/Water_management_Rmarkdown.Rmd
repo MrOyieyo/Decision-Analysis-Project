@@ -36,8 +36,6 @@ library(imager)
 library(DiagrammeR)
 library(readr)
 library(igraph)
-
-
 ```
 
 
@@ -63,47 +61,44 @@ Plot #capital availability, #expertise,  #influence.
 
 <<<<<<< HEAD
 ```{r echo=FALSE}
-data_stakeholder <- "https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Stakeholders/Stakeholder%20Management%20data.csv"
-stakeholder <- read_csv(url(data_stakeholder))
-#stakeholder<-read.csv("Stakeholder Management data.csv")
+data_stakeholder <- "https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Stakeholder%20Management%20data.csv"
+stakeholder <- read.csv(url(data_stakeholder))
 
-stakeholder<-Stakeholder_Management_data <- read.csv("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Dripprojectdata.csv") 
-                                                       col_types = c("text", "text", "text", 
-                                                                     "numeric", "numeric", "numeric", 
-                                                                     "numeric", "numeric")
-#View(Stakeholder_Management_data)
-
-ggplot(data = stakeholder, aes(x = Expertise, 
-                               y = Capital_Availability, 
-                               label = Stakeholders, 
-                               color = Influence))+  
+#ploting the stakeholders data
+ggplot(stakeholder, aes(x = Expertise,
+                                        y = Capital_Availability,
+                                        label = Stakeholders,
+                                        color = Influence)) +
   geom_point() +
-  xlab("Expertise") +
+  xlab("Adoption Influence") +
   
-  #label names of stakeholders and expand space to show full names
-  scale_x_continuous(labels = paste(seq(0, 5, by = 1)), 
-                     breaks = seq(0, 5, by = 1), 
+  
+  #labeling the stakeholders names and showing in full names
+  scale_x_continuous(labels = paste(seq(0, 5, by = 1)),
+                     breaks = seq(0, 5, by = 1),
                      limits = c(0, 5),
                      expand = c(0, 1)) +
+  
   scale_y_continuous(labels = paste(seq(0, 5, by = 1)), 
                      breaks = seq(0, 5, by = 1), 
-                     limits = c(0, 5),
+                     limits = c(0, 5), 
                      expand = c(0, 1)) +
-  theme(plot.margin = unit(c(1, 1, 1, 1), "cm")) +
-  theme(legend.position = "none") +
   
-  # Create line to categorize stakeholders
-  geom_hline(yintercept=2.5, color="white", linewidth=2) +
-  geom_vline(xintercept=2.5, color="white", linewidth=2) +
+  theme(plot.margin = unit(c(1, 1, 1, 1), "cm")) +
+  
+  #create line to categorize stakeholders
+  geom_hline(yintercept=2.5, color="yellow", linewidth=1) +
+  geom_vline(xintercept=2.5, color="yellow", linewidth=1) +
   
   # Show all names of overlapped values
-  geom_text_repel(box.padding = 0.3, max.overlaps = Inf, size = 3) +
-  annotate("text", label = "Potential core experts",
-           x = 4.5, y = 3.5, size = 5, color = "grey48") +
-  annotate("text", label = "Resource persons",
-           x = 4.5, y = 0.25, size = 5, color = "grey48")
+  geom_text_repel(box.padding = 0.3, max.overlaps = Inf, size = 3)+
+  annotate("text", label = "Priority Stakeholders", 
+           x = 4.5, y = 2.5, size = 5, color = "grey48") +
+  annotate("text", label = "Resource persons", 
+           x = 2.5, y = 4.5, size = 5, color = "grey48")
 
 ```
+
 Government, NGO, irrigation authority = most important (as expected) 
 BUT stakeholders with the strongest influence aren’t the best experts and don’t have the biggest available capital (ministry, etc.)
 
@@ -118,8 +113,7 @@ Before investing into the project, precalculation  of the viability of the model
 Rain fed irrigation in Kenya follow a simple evaluation process which is rarely even undertaken by the farmers.
 
 ```{r echo=FALSE}
-knitr::include_graphics("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/Figures/current_evaluation.png")
-#https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/current_evaluation.png")
 
 ```
 #Conceptual model
@@ -134,21 +128,19 @@ Surface irrigation by considering the benefit and the cost results to NPV . Thes
 
 ```{r echo=FALSE}
 
-knitr::include_graphics("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/Figures/Conceptual model.png")
-#https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/Conceptual%20model.png
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/Conceptual%20model.png")
 ```
 The general flow of the evaluation of the project model is as below.
 ```{r echo=FALSE, paged.print=TRUE}
 
-knitr::include_graphics("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/Figures/Impactpath_Rplot.png")
-#https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/Impactpath_Rplot.png
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/Impactpath_Rplot.png")
+
 ```
 
 #Impact Pathway
 ```{r echo=FALSE}
 
-knitr::include_graphics("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/Figures/impact_path_way.png")
-#https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/impact_path_way.png")
 ```
 #Estimates
 
@@ -156,7 +148,7 @@ urlfile = "https://raw.githubusercontent.com/CWWhitney/teaching_R/master/partici
 
 participants_data <- read_csv(url(urlfile))
 ```{r echo=FALSE}
-urlfile = "https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Model%20Function/Estimates.csv" 
+urlfile = "https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Estimates.csv" 
 Estimates = read_csv(url(urlfile))
 
 ```
@@ -273,8 +265,8 @@ Possibility of the outcome determined by using both scenarios under drought or u
 # Imports ####
 
 # Estimates table
-datatable <- "https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Model%20Function/Estimates.csv"
-input_table <- read_csv(url(datatable))
+datatable <- "https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Estimates.csv"
+input_table <- read.csv(url(datatable))
 #input_table<-read.csv("Model Function/Estimates.csv")
 
 # Model function WITH DROUGHT ####
@@ -330,7 +322,7 @@ irrigation_model_function_withDrought<-function(x){
               Cashflow_decision_surface = result_surface))}
 
 mcSimulation_results_withDrought <- decisionSupport::mcSimulation(
-  estimate = decisionSupport::estimate_read_csv("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/Model Function/Estimates.csv"),
+  estimate = decisionSupport::estimate_read_csv("https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Estimates.csv"),
   model_function = irrigation_model_function_withDrought,
   numberOfModelRuns = 200,
   functionSyntax = "plainNames"
@@ -383,7 +375,7 @@ library(readr)
 library(decisionSupport)
 
 # Estimates table
-datatable <- "https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Model%20Function/Estimates.csv"
+datatable <- "https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Estimates.csv"
 input_table <- read_csv(url(datatable))
 
 # Model function WITHOUT DROUGHT ####
@@ -440,7 +432,7 @@ irrigation_model_function_withoutDrought<-function(x){
               Cashflow_decision_surface = result_surface))}
 
 mcSimulation_results_withoutDrought <- decisionSupport::mcSimulation(
-  estimate = decisionSupport::estimate_read_csv("Estimates.csv"),
+  estimate = decisionSupport::estimate_read_csv("https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Estimates.csv"),
   model_function = irrigation_model_function_withoutDrought,
   numberOfModelRuns = 200,
   functionSyntax = "plainNames"
@@ -491,12 +483,12 @@ compound_figure(model = irrigation_model_function_withoutDrought,
 #with drought
 knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/with%20drought-Rplotdistribution.png")
 
-knitr::include_graphics("Figures/with drought - drip compound figure.png")
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/with%20drought%20-%20drip%20compound%20figure.png")
 # explanation of the graphs and pattern flow.
 
 
 #surface irrigation
-knitr::include_graphics("Figures/with drougth - surface irrigation compounding figure.png")
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/with%20drougth%20-%20surface%20irrigation%20compounding%20figure.png")
 
 
 ```
