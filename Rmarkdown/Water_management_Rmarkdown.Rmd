@@ -10,39 +10,39 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#Introduction                  
+# Introduction                  
 Climate change, demand for more reliable food sources and continuous depletion of the natural resources due to anthropogenic factors has become a point of concern.
 Kenya has great potential for underground water exploration for irrigation to increase food production and liberate from seasonal agriculture dependency.
 Around 80% of the national irrigation schemes are still under use of the obsolete irrigation methods such as farrow irrigation. Water use and distribution then has been a problem and efficient water management should be one of the solution strategies.
 
 
 
-#Objective of the Poject. 
+# Objective of the Poject. 
 Efficient Water use and management.This is the core for this project. Adoption of drip irrigation as a way to reduce the amount of water use and ensure consistence agricultural production.
 The authors therefore needed to know the scope and the adoption of this project across the country.
 
 
-#Method for the Analysis.
+# Method for the Analysis.
 The project was fully build up from problem determination,to key stakeholders and decision makers evaluation, data generation , analysis to finial decision making outcome using Rprogramm packages.
 
 ```{r echo=FALSE}
 library(ggplot2)
 library(ggrepel)
 library(ggthemes)
-library(readxl)
 library(dplyr)
 library(decisionSupport)
 library(imager)
 library(DiagrammeR)
 library(readr)
 library(igraph)
+library(tibble)
 ```
 
 
-#Decision Maker
+# Decision Maker
 Government of Kenya is the targeted implementer of the project. All the policies we hoped to be considered are designed and and amended by the government. 
 
-#The Project`s Stakeholders 
+# The Project`s Stakeholders 
  The individual/group who has interests/can affect/ is affected by the decision.In the scheme there are many stakeholders and the majority was sampled to present that category.Government of Kenya, National Irrigation Authority as examples.
 
 Based on the STRATEGIC PLAN (2019-2023) by National Irrigation Authority, 14 stakeholders were considered.
@@ -59,7 +59,6 @@ These were the core basis of categorizing the stakeholders and their influence t
 In the purpose of analysis and defining most important stakeholders and the decision maker
 Plot #capital availability, #expertise,  #influence.
 
-<<<<<<< HEAD
 ```{r echo=FALSE}
 data_stakeholder <- "https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Stakeholder%20Management%20data.csv"
 stakeholder <- read.csv(url(data_stakeholder))
@@ -102,47 +101,50 @@ ggplot(stakeholder, aes(x = Expertise,
 Government, NGO, irrigation authority = most important (as expected) 
 BUT stakeholders with the strongest influence aren’t the best experts and don’t have the biggest available capital (ministry, etc.)
 
-#Project Evaluation
+# Project Evaluation
 Before investing into the project, precalculation  of the viability of the model needed to be determined. Project installation and setup cost against profit generation has to be evaluated.
 
-
-```{r echo=FALSE}
-
-
-```
 Rain fed irrigation in Kenya follow a simple evaluation process which is rarely even undertaken by the farmers.
 
 ```{r echo=FALSE}
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/current_evaluation.png")
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/current_evaluation.png?raw=true")
 
 ```
-#Conceptual model
+
+# Conceptual model
 Framework binds to contribution effect of all the uncertainities, benefits and negatives consequences.
 looking at both short term and long term benefits and general cost for the project.
 Government always looks at the social economic value and the viability of the project before making decision to adopt and allocate resources.
+
 The conceptual framework below shows the relationship between different variables and their relationship to the overral outcome of the project.
+
 Short term effect of the project such as increased yield and production savings are at the farm basis in seasons of production. Longterm effects are the cumulative benefits that the community and the country as whole will benefit. this include such as reduction in the amount of water use which eventually leads more generation  of electricity from the waterfalls.
+
 Apart from the benefit of the drip irrigation there is cost of the project implementation and maintenance. The different result to Present Net Value.
+
 Surface irrigation by considering the benefit and the cost results to NPV . These will form our basic parts of Monte Carlo Evaluation process.
 
 
 ```{r echo=FALSE}
 
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/Conceptual%20model.png")
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/Conceptual%20model.png?raw=true")
 ```
+
 The general flow of the evaluation of the project model is as below.
+
 ```{r echo=FALSE, paged.print=TRUE}
 
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/Impactpath_Rplot.png")
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/Impactpath_Rplot.png?raw=true")
 
 ```
 
-#Impact Pathway
+# Impact Pathway
 ```{r echo=FALSE}
 
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/impact_path_way.png")
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/impact_path_way.png?raw=true")
 ```
-#Estimates
+
+# Estimates
 ```{r echo=FALSE}
 urlfile = "https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Estimates.csv" 
 Estimates = read.csv(url(urlfile))
@@ -151,9 +153,6 @@ Estimates
 ## Simple model code
 
 ```{r echo=FALSE}
-
-# Imports
-
 #### DRIP IRRIGATION ####
 #Building the model
 dripline_estimates <- data.frame(variable = c("Yield","Marketvalue", "Management", "Watersource", "Nutrition", "Powergeneration", "Establishmentcost", 
@@ -254,7 +253,7 @@ plot_distributions(mcSimulation_object = SurfaceIrr_mc_simulation,
                    new_names = "Outcome distribution for profits")
 
 ```
-#Model Upgrade
+# Model Upgrade
 Possibility of the outcome determined by using both scenarios under drought or under no drought influence. As an external factor out of the project control, it influences the water shade and predominantly the environment around the project´s inplimentation.
 ```{r echo=FALSE}
 #Code with drought consideration
@@ -471,25 +470,23 @@ compound_figure(model = irrigation_model_function_withoutDrought,
                 distribution_method = 'smooth_simple_overlay',
                 labels("Surface Irrigation"))
 ````
-#Analysis and Result
-
-
+# Analysis and Result
 
 ```{r echo=FALSE}
 #with drought
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/with%20drought-Rplotdistribution.png")
+("Figures/with%20drought-Rplotdistribution.png")
 
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/with%20drought%20-%20drip%20compound%20figure.png")
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/with%20drought%20-%20drip%20compound%20figure.png?raw=true")
 # explanation of the graphs and pattern flow.
 
 
 #surface irrigation
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/with%20drougth%20-%20surface%20irrigation%20compounding%20figure.png")
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/with%20drougth%20-%20surface%20irrigation%20compounding%20figure.png?raw=true")
 
 
 ```
 
-#Learning point
+# Learning point
 
 
 We hope to come up with estimate data that will give value to the uncertainties linked to our project using McSimulation. 
@@ -499,7 +496,7 @@ Setseed - to set the run of codes should start.
                    
 
 
-#Reference
+# Reference
 ```{r add_R_bib, include=FALSE}
 knitr::write_bib(c(.packages(),
                    'knitr','decisionSupport'), 'export.bib')
