@@ -1,14 +1,15 @@
 ---
-title: "Drip Irrigation Adoption in Mwea Scheme,Kenya"
-subtitle: "A decision support model for government of Kenya, using the decisionSupport R package by Lüdeling et al."
-author: "Adrian, Apana, Silas, Steven"
-#output: 
-date: "`r Sys.Date()`"
-#bibliography: project_packages.bib
-#editor_options: 
-  #markdown: 
-    #wrap: 72
+title: My R Markdown Document
+author: John Doe
+date: 2023-07-12
+output: html_document
 ---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 #Introduction                  
 Climate change, demand for more reliable food sources and continuous depletion of the natural resources due to anthropogenic factors has become a point of concern.
 Kenya has great potential for underground water exploration for irrigation to increase food production and liberate from seasonal agriculture dependency.
@@ -23,6 +24,22 @@ The authors therefore needed to know the scope and the adoption of this project 
 
 #Method for the Analysis.
 The project was fully build up from problem determination,to key stakeholders and decision makers evaluation, data generation , analysis to finial decision making outcome using Rprogramm packages.
+
+```{r echo=FALSE}
+library(ggplot2)
+library(ggrepel)
+library(ggthemes)
+library(readxl)
+library(dplyr)
+library(decisionSupport)
+library(imager)
+library(DiagrammeR)
+library(readr)
+library(igraph)
+
+
+```
+
 
 #Decision Maker
 Government of Kenya is the targeted implementer of the project. All the policies we hoped to be considered are designed and and amended by the government. 
@@ -45,16 +62,14 @@ In the purpose of analysis and defining most important stakeholders and the deci
 Plot #capital availability, #expertise,  #influence.
 
 <<<<<<< HEAD
-```{r package-installation, echo=TRUE}
-library(ggplot2)
-library(ggrepel)
+```{r echo=FALSE}
+
 stakeholder<-read.csv("Stakeholder Management data.csv")
 
-stakeholder<-Stakeholder_Management_data <- read.csv("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Dripprojectdata.csv") 
+#stakeholder<-Stakeholder_Management_data <- read.csv("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Dripprojectdata.csv") 
                                                        col_types = c("text", "text", "text", 
                                                                      "numeric", "numeric", "numeric", 
                                                                      "numeric", "numeric")
-
 #View(Stakeholder_Management_data)
 
 ggplot(data = stakeholder, aes(x = Expertise, 
@@ -77,8 +92,8 @@ ggplot(data = stakeholder, aes(x = Expertise,
   theme(legend.position = "none") +
   
   # Create line to categorize stakeholders
-  geom_hline(yintercept=2.5, color="white", size=2) +
-  geom_vline(xintercept=2.5, color="white", size=2) +
+  geom_hline(yintercept=2.5, color="white", linewidth=2) +
+  geom_vline(xintercept=2.5, color="white", linewidth=2) +
   
   # Show all names of overlapped values
   geom_text_repel(box.padding = 0.3, max.overlaps = Inf, size = 3) +
@@ -95,18 +110,14 @@ BUT stakeholders with the strongest influence aren’t the best experts and don�
 Before investing into the project, precalculation  of the viability of the model needed to be determined. Project installation and setup cost against profit generation has to be evaluated.
 
 
-```{r package-installation, echo=TRUE}
-library(imager)
-Conceptual_model <- load.image("Conceptual model.png")
-plot(Conceptual_model)
+```{r echo=FALSE}
+
 
 ```
-Rain fed irrigation in Kenya foloow a simple evaluation process which is rarely even undertaken by the farmers.
+Rain fed irrigation in Kenya follow a simple evaluation process which is rarely even undertaken by the farmers.
 
-```{r package-installation, echo=TRUE}
-library(imager)
-evaluationframe <- load.image("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/current_evaluation.png")
-plot(evaluationframe,axes = FALSE)
+```{r echo=FALSE}
+knitr::include_graphics('https://github.com/MrOyieyo/Decision-Analysis-Project/blob/0dece34a90de301283d8fbf29d98de4804ac16ef/Figures/current_evaluation.png')
 
 ```
 #Conceptual model
@@ -116,40 +127,91 @@ Government always looks at the social economic value and the viability of the pr
 The conceptual framework below shows the relationship between different variables and their relationship to the overral outcome of the project.
 Short term effect of the project such as increased yield and production savings are at the farm basis in seasons of production. Longterm effects are the cumulative benefits that the community and the country as whole will benefit. this include such as reduction in the amount of water use which eventually leads more generation  of electricity from the waterfalls.
 Apart from the benefit of the drip irrigation there is cost of the project implementation and maintenance. The different result to Present Net Value.
-Surface irrigation by considering the benefit and the cost results to NPV . These will form our basic parts of montecarlo Evaluation process.
+Surface irrigation by considering the benefit and the cost results to NPV . These will form our basic parts of Monte Carlo Evaluation process.
 
 
-```{r package-installation, echo=TRUE}
+```{r echo=FALSE}
 
-library(imager)
-Conceptual_model <- load.image("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/Conceptual_model.png")
-plot(Conceptual_model,axes = FALSE)
-#
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/0dece34a90de301283d8fbf29d98de4804ac16ef/Figures/Conceptual%20model.png")
 ```
-The general flow of the evaluation of the model benefit is as below.
-```{r package-installation, echo=TRUE}
-model_benefit_flow <- load.image("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/model_flow.png")
-plot(model_benefit_flow, axes = FALSE)
+The general flow of the evaluation of the project model is as below.
+```{r echo=FALSE}
 
-library(DiagrammeR)
-mermaid(diagram = "graph LR
-    Y(Yield)-->Ag(AgricIncome); linkStyle 0 stroke: blue, stroke-width:1.5px
-    Mg(Management)-->Ag; linkStyle 1 stroke: blue, stroke-width:1.5px
-    WB(Watersource)-->Ex(ExternalIncome); linkStyle 2 stroke: blue, stroke-width:1.5px
-    Ag-->TP(TotalProfit); linkStyle 3 stroke:blue, stroke-width: 1.5px
-    Ex-->TP; linkStyle 4 stroke: blue, stroke-width: 1.5px
-    In(InstallCost)-->TC(Total_Cost); linkStyle 5 stroke: red, stroke-width:1.5px
-    MngtC(ManagementCost)-->TC; linkStyle 6 stroke: red, stroke-width: 1.5px
-    TP-->NP(NetProfit); linkStyle 7 stroke: blue, stroke-width: 1.5px
-    TC-->NP; linkStyle 8 stroke: red, stroke-width: 1.5px")
-
-
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/0dece34a90de301283d8fbf29d98de4804ac16ef/Figures/Impactpath_Rplot.png")
 ```
 
 #Impact Pathway
-```{r package-installation, echo=TRUE}
-library(igraph)
-SurfaceIrr_path<- graph.formula(SurfaceIrr-+Yield,
+```{r echo=FALSE}
+#dripIrr_path<-load.image("Figures/Impactpath_Rplot.png")
+#plot(dripIrr_path, axes=FALSE)
+
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/0dece34a90de301283d8fbf29d98de4804ac16ef/Figures/impact_path_way.png")
+```
+#Estimates
+
+urlfile = "https://raw.githubusercontent.com/CWWhitney/teaching_R/master/participants_data.csv"
+
+participants_data <- read_csv(url(urlfile))
+
+## Simple model code
+
+```{r echo=FALSE}
+
+# Imports
+
+#### DRIP IRRIGATION ####
+#Building the model
+dripline_estimates <- data.frame(variable = c("Yield","Marketvalue", "Management", "Watersource", "Nutrition", "Powergeneration", "Establishmentcost", 
+                                              "Managementcost"),
+                                 lower = c(25, 0.5, 10, 6, 3, 5, 18, 8),
+                                 median = NA,
+                                 upper = c(90, 5, 39, 20, 13, 17, 81, 34),
+                                 distribution = c("posnorm", "posnorm", "posnorm", "posnorm", "posnorm", "posnorm", "posnorm", "posnorm"),
+                                 label = c("Yield (kg/ha)", "Price (ksh/kg)", "management_savings(ksh)", "Basinprofits(ksh)", "Nutrientgain(ksh)",
+                                           "Electricity(ksh/Kw)", "instalationcost(ksh", "managementcost(Ksh)"),
+                                 Description = c("Yield of the maize crop", "Market price per KG of maize grain", "Reduced cost of weed management",
+                                                 "Benefits generated from efficient water use from basin", "Value of food nutrient generated", 
+                                                 "Kw of electricity increased by increased water levels", "Cost of generating installing the project", 
+                                                 "Cost of project maintainance" ))
+
+
+dripmodel_function <- function(){
+  #The model_function
+  # Estimate the income in a normal season
+  AgriIncome <- (Yield*Marketvalue) + Management 
+  ExtIncome <- Watersource + Nutrition + Powergeneration
+  TotalProfits <- AgriIncome + ExtIncome
+  
+  # Estimate the overall costs
+  Overallcosts<- Establishmentcost + Managementcost
+  
+  # Estimate the final results from the model
+  final_result <- TotalProfits - Overallcosts
+  
+  # Generate the list of outputs from the Monte Carlo simulation
+  return(list(final_result = final_result))
+}
+
+# Monte-Carlo simulation
+dripline_mc_simulation <- mcSimulation(estimate = as.estimate(dripline_estimates),
+                                       model_function = dripmodel_function,
+                                       numberOfModelRuns = 800,
+                                       functionSyntax = "plainNames")
+
+#dripline_mc_simulation
+
+#Plot distribution
+plot_distributions(mcSimulation_object = dripline_mc_simulation,
+                   vars = "final_result",
+                   method = "boxplot_density",
+                   old_names = "final_result",
+                   new_names = "Outcome distribution for profits")
+
+
+
+#### SURFACE IRRIGATION ####
+#surface irrigation pathway
+SurfaceIrr_path<-graph.formula(SurfaceIrr-+Yield,
                                SurfaceIrr-+Incomes,
                                SurfaceIrr-+Management,
                                MaintenanceCost-+SurfaceIrr,
@@ -159,23 +221,305 @@ SurfaceIrr_path<- graph.formula(SurfaceIrr-+Yield,
                                Yields-+TotalBenefits,
                                TotalBenefits-+CurrentSituationOutcome,
                                TotalCost-+CurrentSituationOutcome)
-plot(SurfaceIrr_path)
+#plot(SurfaceIrr_path)
+
+SurfaceIrr_Path<-graph.formula()
+
+#surface Irrigation estimates
+SurfaceIrr_estimates <- data.frame(variable = c("Yield","Management","Incomes","Maintenancecost"),
+                                   lower = c(14, 2, 20, 4),
+                                   median = NA,
+                                   upper = c(20, 10, 23, 10),
+                                   distribution = c("posnorm","posnorm","posnorm","posnorm"),
+                                   label = c("Yield (kg/ha)","Savings","Incomes (Ksh)","managementcost(Ksh)"),
+                                   Description = c("Total Yields (Ksh","Savings from Management (Ksh)","All incomes earned (Ksh)","Cost of project maintainance"))
+
+#SurfaceIrr_estimates
+
+#Surface Irrigation Function
+SurfaceIrr_function <- function(){
+  TotalBenefits <-(Yield+Management+Incomes)
+  TotalCost<-Maintenancecost
+  final_result<-TotalBenefits-TotalCost
+  return(list(final_result = final_result))
+}
+
+# Monte-Carlo simulation
+SurfaceIrr_mc_simulation <- mcSimulation(estimate = as.estimate(SurfaceIrr_estimates),
+                                       model_function = SurfaceIrr_function,
+                                       numberOfModelRuns = 800,
+                                       functionSyntax = "plainNames")
+
+
+#Plot distribution
+plot_distributions(mcSimulation_object = SurfaceIrr_mc_simulation,
+                   vars = "final_result",
+                   method = "boxplot_density",
+                   old_names = "final_result",
+                   new_names = "Outcome distribution for profits")
 
 ```
-## What next
+#Model Upgrade
+Possibility of the outcome determined by using both scenarios under drought or under no drought influence. As an external factor out of the project control, it influences the water shade and predominantly the environment around the project´s inplimentation.
+```{r echo=FALSE}
+#Code with drought consideration
+# Imports ####
+library(readr)
+library(decisionSupport)
+
+# Estimates table
+datatable <- "https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Model%20Function/Estimates.csv"
+input_table <- read_csv(url(datatable))
+#input_table<-read.csv("Model Function/Estimates.csv")
+
+# Model function WITH DROUGHT ####
+irrigation_model_function_withDrought<-function(x){
+  
+  # calculate drought risks: impact the implementation of drought ####
+  droughtEvent <-chance_event(Drought_Event, 1, 0, n = 5)
+  
+  #  Intervention ####
+  for (decision_drip_irrigation in c(FALSE,TRUE)){
+    
+    if (decision_drip_irrigation){
+      
+      # Profits ####
+      Profits<-vv(Drip_Yield,Var_CV,n_years)*Marketvalue+Drip_Management+Drip_All_other_incomes
+      
+      # Costs ####
+      Drip_Establishmentcost<-c(Drip_Establishmentcost,0,0,0,0)
+      Overallcosts<- Drip_Establishmentcost+Drip_MaintenanceCost
+      
+      # Results ####
+      net_benefits <- Profits - Overallcosts
+      result_drip <- net_benefits
+    }
+    
+    else{
+      
+      # Profits ####
+      # Drought
+      Profits<-vv(Surface_Yield,Var_CV,n_years)*
+          (1-vv(Drought_Discount, Var_CV,n_years)*droughtEvent)*
+          Marketvalue+Surface_Management+Surface_All_other_incomes
+      
+      # Costs ####
+      Surface_Establishmentcost<-c(Surface_Establishmentcost,0,0,0,0)
+      Overallcosts<- Surface_MaintenanceCost+Surface_Establishmentcost
+      
+      # Results ####
+      net_benefits <- Profits - Overallcosts
+      result_surface <- net_benefits}
+    
+  }   #close intervention loop bracket
+  NPV_interv <-
+    discount(result_drip, discount_rate, calculate_NPV = TRUE)
+  
+  NPV_n_interv <-
+    discount(result_surface, discount_rate, calculate_NPV = TRUE)
+  
+  return(list(Drip_NPV = NPV_interv,
+              Surf_NPV = NPV_n_interv,
+              NPV_decision_do = NPV_interv - NPV_n_interv,
+              Cashflow_decision_drip = result_drip,
+              Cashflow_decision_surface = result_surface))}
+
+mcSimulation_results_withDrought <- decisionSupport::mcSimulation(
+  estimate = decisionSupport::estimate_read_csv("Estimates.csv"),
+  model_function = irrigation_model_function_withDrought,
+  numberOfModelRuns = 200,
+  functionSyntax = "plainNames"
+)
+
+# Plot distrbution ####
+decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_withDrought, 
+                                    vars = c("Drip_NPV","Surf_NPV"),
+                                    method = 'smooth_simple_overlay', 
+                                    base_size = 7)+
+  decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_withDrought, 
+                                      vars = c("Drip_NPV",
+                                               "Surf_NPV"),
+                                      method = 'boxplot')+
+# Plot cashflow ####
+plot_cashflow(mcSimulation_object = mcSimulation_results_withDrought, 
+              cashflow_var_name = c("Cashflow_decision_drip", "Cashflow_decision_surface"),
+              x_axis_name = "Years with intervention",
+              y_axis_name = "Annual cashflow in Ksh",
+              color_25_75 = "purple4", color_5_95 ="purple2",
+              color_median = "red", 
+              facet_labels = c("Drip irrigation", "Surface irrigation"))
+
+# Compound drip irrigation
+compound_figure(model = irrigation_model_function_withDrought,
+                input_table = input_table,
+                decision_var_name = "Drip_NPV",
+                cashflow_var_name = "Cashflow_decision_drip",
+                model_runs = 1e2,
+                distribution_method = 'smooth_simple_overlay',
+                labels("Drip Irrigation"))
+
+#compound surface irrigation
+compound_figure(model = irrigation_model_function_withDrought, 
+                  input_table = input_table, 
+                  decision_var_name = "Surf_NPV",
+                  cashflow_var_name = "Cashflow_decision_surface",
+                  model_runs = 1e2, 
+                  distribution_method = 'smooth_simple_overlay',
+                  labels("Surface Irrigation"))  
+
+
+
+
+```
+````{r echo=FALSE}
+#Code without drought consideration
+# Imports ####
+library(readr)
+library(decisionSupport)
+
+# Estimates table
+datatable <- "https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Model%20Function/Estimates.csv"
+input_table <- read_csv(url(datatable))
+
+# Model function WITHOUT DROUGHT ####
+irrigation_model_function_withoutDrought<-function(x){
+  
+  # calculate drought risks: impact the implementation of drought ####
+  droughtEvent <-chance_event(Drought_Event, 0, 0, n = 5)
+  
+  #  Intervention ####
+  for (decision_drip_irrigation in c(FALSE,TRUE)){
+    
+    if (decision_drip_irrigation){
+      
+      # Profits ####
+      Profits<-vv(Drip_Yield,Var_CV,n_years)*Marketvalue+
+        Drip_Management+Drip_All_other_incomes
+      
+      # Costs ####
+      Drip_Establishmentcost<-c(Drip_Establishmentcost,0,0,0,0)
+      Overallcosts<- Drip_Establishmentcost+Drip_MaintenanceCost
+      
+      # Results ####
+      net_benefits <- Profits - Overallcosts
+      result_drip <- net_benefits
+    }
+    
+    else{
+      
+      # Profits ####
+      # Drought
+      Profits<-vv(Surface_Yield,Var_CV,n_years)*
+        (1-vv(Drought_Discount, Var_CV,n_years)*droughtEvent)*
+        Marketvalue+Surface_Management+Surface_All_other_incomes
+      
+      # Costs ####
+      Surface_Establishmentcost<-c(Surface_Establishmentcost,0,0,0,0)
+      Overallcosts<- Surface_MaintenanceCost+Surface_Establishmentcost
+      
+      # Results ####
+      net_benefits <- Profits - Overallcosts
+      result_surface <- net_benefits}
+    
+  }   #close intervention loop bracket
+  NPV_interv <-
+    discount(result_drip, discount_rate, calculate_NPV = TRUE)
+  
+  NPV_n_interv <-
+    discount(result_surface, discount_rate, calculate_NPV = TRUE)
+  
+  return(list(Drip_NPV = NPV_interv,
+              Surf_NPV = NPV_n_interv,
+              NPV_decision_do = NPV_interv - NPV_n_interv,
+              Cashflow_decision_drip = result_drip,
+              Cashflow_decision_surface = result_surface))}
+
+mcSimulation_results_withoutDrought <- decisionSupport::mcSimulation(
+  estimate = decisionSupport::estimate_read_csv("Estimates.csv"),
+  model_function = irrigation_model_function_withoutDrought,
+  numberOfModelRuns = 200,
+  functionSyntax = "plainNames"
+)
+
+# Plot distrbution ####
+decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_withoutDrought, 
+                                    vars = c("Drip_NPV","Surf_NPV"),
+                                    method = 'smooth_simple_overlay', 
+                                    base_size = 7)+
+  decisionSupport::plot_distributions(mcSimulation_object = mcSimulation_results_withoutDrought, 
+                                      vars = c("Drip_NPV",
+                                               "Surf_NPV"),
+                                      method = 'boxplot')+
+  # Plot cashflow ####
+plot_cashflow(mcSimulation_object = mcSimulation_results_withoutDrought, 
+              cashflow_var_name = c("Cashflow_decision_drip", "Cashflow_decision_surface"),
+              x_axis_name = "Years with intervention",
+              y_axis_name = "Annual cashflow in Ksh",
+              color_25_75 = "purple4", color_5_95 ="purple2",
+              color_median = "red", 
+              facet_labels = c("Drip irrigation", "Surface irrigation"))
+
+
+# Compound drip irrigation
+compound_figure(model = irrigation_model_function_withoutDrought,
+                input_table = input_table,
+                decision_var_name = "Drip_NPV",
+                cashflow_var_name = "Cashflow_decision_drip",
+                model_runs = 1e2,
+                distribution_method = 'smooth_simple_overlay',
+                labels("Drip Irrigation"))
+
+#compound surface irrigation
+compound_figure(model = irrigation_model_function_withoutDrought,
+                input_table = input_table,
+                decision_var_name = "Surf_NPV",
+                cashflow_var_name = "Cashflow_decision_surface",
+                model_runs = 1e2,
+                distribution_method = 'smooth_simple_overlay',
+                labels("Surface Irrigation"))
+````
+#Analysis and Result
+
+
+
+```{r echo=FALSE}
+#with drought
+knitr::include_graphics("Figures/with drought-Rplotdistribution.png")
+
+knitr::include_graphics("Figures/with drought - drip compound figure.png")
+# explanation of the graphs and pattern flow.
+
+
+#surface irrigation
+knitr::include_graphics("Figures/with drougth - surface irrigation compounding figure.png")
+
+
+```
+
+#Learning point
+
+
 We hope to come up with estimate data that will give value to the uncertainties linked to our project using McSimulation. 
 Building the model with Plot of the impact pathway and calibration of the data will consequentially take place.
 
 Setseed - to set the run of codes should start.
                    
 
-Presentation 
-                   #THANK YOU
 
-```{r package-installation, echo=TRUE}
-
-
+#Reference
+```{r add_R_bib, include=FALSE}
+knitr::write_bib(c(.packages(),
+                   'knitr','decisionSupport'), 'export.bib')
 ```
 
 
 
+
+```{r echo=FALSE}
+
+
+
+
+```
+Presentation 
+                   #THANK YOU
