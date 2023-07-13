@@ -3,6 +3,8 @@ title: Drip irrigation adoption in MWEA irrigation scheme, Kenya.
 author: Adrian, Apana, Silas, Steven
 date: 2023-07-12
 output: html_document
+bibliography:
+- export.bib
 ---
 
 
@@ -10,19 +12,20 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Introduction                  
-Demand for more reliable food sources, continuous depletion of the natural resources and climate change due to anthropogenic factors have become a point of concern. It is from this background that many governments around the world set up irrigation schemes to enhance food and nutrition security, improve livelihoods in rural areas.
+# Introduction
 
-Kenya has great potential to increase food production and get liberated from seasonal agriculture dependency through investing in more water efficient agricultural technologies to improve yields and subsequently rural development.
+Demand for more reliable food sources, continuous depletion of the natural resources and climate change due to anthropogenic factors have become a point of concern. It is from this background that many governments around the world set up irrigation schemes to enhance food and nutrition security, improve livelihoods in rural areas. (@UNFPA2022)
 
-Around 80% (Strategic-Plan-Final)of the national irrigation schemes are still under surface irrigation system like; farrow, boarder, flood methods of irrigation. This leads to wastage of water resources, depletes ground  Water, uneven distribution then has been a problem and efficient water management should be one of the solution strategies.
+Kenya has great potential to increase food production and get liberated from seasonal agriculture dependency through investing in more water efficient agricultural technologies to improve yields and subsequently rural development.(@Kanda2022)
+
+Around 80% (Strategic-Plan-Final)of the national irrigation schemes are still under surface irrigation system like; farrow, boarder, flood methods of irrigation. This leads to wastage of water resources, depletes ground  Water, uneven distribution then has been a problem and efficient water management should be one of the solution strategies. (@NIA2019)
 
 
 
 # Objective of the Poject. 
 Efficient Water use and management.This is the core for this project. Adoption of drip irrigation as a way to reduce the amount of water use and ensure consistence agricultural production.
 The authors therefore needed to know the scope and the adoption of this project across the country.
-
+(@Mati2023)
 
 # Method for the Analysis.
 The project was fully build up from problem determination,to key stakeholders and decision makers evaluation, data generation , analysis to finial decision making outcome using Rprogramm packages.
@@ -485,7 +488,7 @@ Building the model with Plot of the impact pathway and calibration of the data w
 
 Setseed - to set the run of codes should start.
 
-# Reference
+# References
 ```{r add_R_bib, include=FALSE}
 knitr::write_bib(c(.packages(),
                    'knitr','decisionSupport'), 'export.bib')
