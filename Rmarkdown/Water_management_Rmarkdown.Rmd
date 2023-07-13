@@ -143,14 +143,10 @@ knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/b
 knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/impact_path_way.png")
 ```
 #Estimates
-
-urlfile = "https://raw.githubusercontent.com/CWWhitney/teaching_R/master/participants_data.csv"
-
-participants_data <- read_csv(url(urlfile))
 ```{r echo=FALSE}
-urlfile = "https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Estimates.csv" 
-Estimates = read_csv(url(urlfile))
-
+urlfile = "https://raw.githubusercontent.com/MrOyieyo/Decision-Analysis-Project/main/Estimates.csv" 
+Estimates = read.csv(url(urlfile))
+Estimates
 ```
 ## Simple model code
 
