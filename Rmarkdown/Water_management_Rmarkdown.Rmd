@@ -63,10 +63,11 @@ Plot #capital availability, #expertise,  #influence.
 
 <<<<<<< HEAD
 ```{r echo=FALSE}
+data_stakeholder <- "https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Stakeholders/Stakeholder%20Management%20data.csv"
+stakeholder <- read_csv(url(data_stakeholder))
+#stakeholder<-read.csv("Stakeholder Management data.csv")
 
-stakeholder<-read.csv("Stakeholder Management data.csv")
-
-#stakeholder<-Stakeholder_Management_data <- read.csv("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Dripprojectdata.csv") 
+stakeholder<-Stakeholder_Management_data <- read.csv("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Dripprojectdata.csv") 
                                                        col_types = c("text", "text", "text", 
                                                                      "numeric", "numeric", "numeric", 
                                                                      "numeric", "numeric")
@@ -117,7 +118,8 @@ Before investing into the project, precalculation  of the viability of the model
 Rain fed irrigation in Kenya follow a simple evaluation process which is rarely even undertaken by the farmers.
 
 ```{r echo=FALSE}
-knitr::include_graphics('https://github.com/MrOyieyo/Decision-Analysis-Project/blob/0dece34a90de301283d8fbf29d98de4804ac16ef/Figures/current_evaluation.png')
+knitr::include_graphics("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/Figures/current_evaluation.png")
+#https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures
 
 ```
 #Conceptual model
@@ -132,27 +134,32 @@ Surface irrigation by considering the benefit and the cost results to NPV . Thes
 
 ```{r echo=FALSE}
 
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/0dece34a90de301283d8fbf29d98de4804ac16ef/Figures/Conceptual%20model.png")
+knitr::include_graphics("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/Figures/Conceptual model.png")
+#https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/Conceptual%20model.png
 ```
 The general flow of the evaluation of the project model is as below.
-```{r echo=FALSE}
+```{r echo=FALSE, paged.print=TRUE}
 
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/0dece34a90de301283d8fbf29d98de4804ac16ef/Figures/Impactpath_Rplot.png")
+knitr::include_graphics("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/Figures/Impactpath_Rplot.png")
+#https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/Impactpath_Rplot.png
 ```
 
 #Impact Pathway
 ```{r echo=FALSE}
-#dripIrr_path<-load.image("Figures/Impactpath_Rplot.png")
-#plot(dripIrr_path, axes=FALSE)
 
-knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/0dece34a90de301283d8fbf29d98de4804ac16ef/Figures/impact_path_way.png")
+knitr::include_graphics("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/Figures/impact_path_way.png")
+#https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures
 ```
 #Estimates
 
 urlfile = "https://raw.githubusercontent.com/CWWhitney/teaching_R/master/participants_data.csv"
 
 participants_data <- read_csv(url(urlfile))
+```{r echo=FALSE}
+urlfile = "https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Model%20Function/Estimates.csv" 
+Estimates = read_csv(url(urlfile))
 
+```
 ## Simple model code
 
 ```{r echo=FALSE}
@@ -264,8 +271,6 @@ Possibility of the outcome determined by using both scenarios under drought or u
 ```{r echo=FALSE}
 #Code with drought consideration
 # Imports ####
-library(readr)
-library(decisionSupport)
 
 # Estimates table
 datatable <- "https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Model%20Function/Estimates.csv"
@@ -325,7 +330,7 @@ irrigation_model_function_withDrought<-function(x){
               Cashflow_decision_surface = result_surface))}
 
 mcSimulation_results_withDrought <- decisionSupport::mcSimulation(
-  estimate = decisionSupport::estimate_read_csv("Estimates.csv"),
+  estimate = decisionSupport::estimate_read_csv("C:/Users/oyiey/OneDrive/Dokumente/UniBonn SS2023/DecisionAnalysis/Decision-Analysis-Project/Decision-Analysis-Project/Model Function/Estimates.csv"),
   model_function = irrigation_model_function_withDrought,
   numberOfModelRuns = 200,
   functionSyntax = "plainNames"
@@ -484,7 +489,7 @@ compound_figure(model = irrigation_model_function_withoutDrought,
 
 ```{r echo=FALSE}
 #with drought
-knitr::include_graphics("Figures/with drought-Rplotdistribution.png")
+knitr::include_graphics("https://github.com/MrOyieyo/Decision-Analysis-Project/blob/main/Figures/with%20drought-Rplotdistribution.png")
 
 knitr::include_graphics("Figures/with drought - drip compound figure.png")
 # explanation of the graphs and pattern flow.
@@ -516,9 +521,6 @@ knitr::write_bib(c(.packages(),
 
 
 ```{r echo=FALSE}
-
-
-
 
 ```
 Presentation 
