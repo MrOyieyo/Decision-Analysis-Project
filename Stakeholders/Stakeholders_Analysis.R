@@ -7,7 +7,7 @@ library(dplyr)
 
 
 #Ploting stakeholder analysis
-watermanagement_stakeholder <- read.csv("Stakeholders/Stakeholder Management data.csv")
+watermanagement_stakeholder <- read.csv("Stakeholder Management data.csv")
 View(watermanagement_stakeholder)
 
 #ploting the stakeholders data

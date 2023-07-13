@@ -3,7 +3,7 @@ library(readr)
 library(decisionSupport)
 
 # Estimates table
-input_table<-read.csv("Model Function/Estimates.csv")
+input_table<-read.csv("Estimates.csv")
 View(input_table)
 
 # Model function WITH DROUGHT ####
