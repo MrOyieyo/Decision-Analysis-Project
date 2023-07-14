@@ -3,7 +3,7 @@ title: DRIP IRRIGATION ADOPTION IN MWEA IRRGATON SCHEME,KENYA.
 author: Adrian, Apana, Silas, Steven
 date: 2023-07-12
 output: html_document
-bibliography: exported Items.bib
+bibliography: References/reference_item.bib
 ---
 
 
@@ -15,11 +15,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-Demand for more reliable food sources, continuous depletion of the natural resources and climate change due to anthropogenic factors have become a point of concern. It is from this background that many governments around the world set up irrigation schemes to enhance food and nutrition security, improve livelihoods in rural areas. (@UNFPA2022)
+Demand for more reliable food sources, continuous depletion of the natural resources and climate change due to anthropogenic factors have become a point of concern. It is from this background that many governments around the world set up irrigation schemes to enhance food and nutrition security, improve livelihoods in rural areas. (@mati_farmer-led_2023)
 
-Kenya has great potential to increase food production and get liberated from seasonal agriculture dependency through investing in more water efficient agricultural technologies to improve yields and subsequently rural development.(@Kanda2022)
+Kenya has great potential to increase food production and get liberated from seasonal agriculture dependency through investing in more water efficient agricultural technologies to improve yields and subsequently rural development.(@kanda_status_2022)
 
-Around 80% (Strategic-Plan-Final)of the national irrigation schemes are still under surface irrigation system like; farrow, boarder, flood methods of irrigation. This leads to wastage of water resources, depletes ground  Water, uneven distribution then has been a problem and efficient water management should be one of the solution strategies. (@NIA2019)
+Around 80% (Strategic-Plan-Final)of the national irrigation schemes are still under surface irrigation system like; farrow, boarder, flood methods of irrigation. This leads to wastage of water resources, depletes ground  Water, uneven distribution then has been a problem and efficient water management should be one of the solution strategies. (@holting_including_2020)
 
 # Introduction                  
 Demand for more reliable food sources, continuous depletion of the natural resources and climate change due to anthropogenic factors have become a point of concern. It is from this background that many governments around the world set up irrigation schemes to enhance food and nutrition security and improve livelihoods in rural areas.
@@ -68,7 +68,7 @@ library(igraph)
 
 
 # Decision Maker
-All interventions and development works in a country are implemented by government or on behalf of the government or in partnership with government. Therefore, Government of Kenya is the targeted implementer of the project. All the policies we hope to be considered are designed and and amended by the government. 
+All interventions and development works in a country are implemented by government or on behalf of the government or in partnership with government. Therefore, Government of Kenya is the targeted implementer of the project. All the policies we hope to be considered are designed and and amended by the government @holting_including_2020. 
 
 # The Project`s Stakeholders 
  The individual/group who has interests/can affect/ is affected by the decision.In the scheme there are many stakeholders and the majority was sampled to present that category.Government of Kenya, National Irrigation Authority as examples.
@@ -585,10 +585,14 @@ The benefits are verse more and able to improve productivity, water use efficien
 Through the project and interaction with the R Programming language,  more insight on the language and its packages have availed its importance in research. Especialy under uncertainty when appropriate  decisions are required.
 
 
-# References
+# Reference_item
+
+
+
+
 ```{r add_R_bib, include=FALSE}
-knitr::write_bib(c(.packages(),
-                   'knitr','decisionSupport'), 'exported Items.bib')
+#knitr::write_bib(c(.packages(),
+                   #'knitr','decisionSupport'), 'reference_item.bib')
 ```
 
 
