@@ -3,17 +3,12 @@ title : DRIP IRRIGATION ADOPTION IN MWEA IRRGATON SCHEME,KENYA.
 author: Adrian, Apana, Silas, Steven
 date: 2023-07-12
 output: html_document
-<<<<<<< HEAD
-bibliography: References/reference_item.bib
-=======
->>>>>>> d4cdec93f74564062eb0fad2f1c4c41069531e9e
+bibliography: ../Rmarkdown/reference_item.bib
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-<<<<<<< HEAD
 
 # Introduction
 
@@ -23,8 +18,6 @@ Kenya has great potential to increase food production and get liberated from sea
 
 Around 80% (Strategic-Plan-Final)of the national irrigation schemes are still under surface irrigation system like; farrow, boarder, flood methods of irrigation. This leads to wastage of water resources, depletes ground  Water, uneven distribution then has been a problem and efficient water management should be one of the solution strategies. (@holting_including_2020)
 
-=======
->>>>>>> d4cdec93f74564062eb0fad2f1c4c41069531e9e
 # Introduction                  
 Demand for more reliable food sources, continuous depletion of the natural resources and climate change due to anthropogenic factors have become a point of concern. It is from this background that many governments around the world set up irrigation schemes to enhance food and nutrition security and improve livelihoods in rural areas.
 
@@ -62,16 +55,15 @@ library(DiagrammeR)
 library(readr)
 library(flextable)
 library(igraph)
+library(knitr)
 ```
 
 
-<<<<<<< HEAD
 # Decision Maker
 All interventions and development works in a country are implemented by government or on behalf of the government or in partnership with government. Therefore, Government of Kenya is the targeted implementer of the project. All the policies we hope to be considered are designed and and amended by the government @holting_including_2020. 
-=======
+
 ## Decision Maker
 All interventions and development works in a country are implemented by government or on behalf of the government or in partnership with government. Therefore, Government of Kenya is the targeted implementer of the project. All the policies we hope to be considered are designed and and amended by the government. 
->>>>>>> d4cdec93f74564062eb0fad2f1c4c41069531e9e
 
 # Stakeholders Analysis 
  The individual/group who has interests/can affect/ is affected by the decision.In the scheme there are many stakeholders and the majority was sampled to present that category.Government of Kenya, National Irrigation Authority as examples.
@@ -136,7 +128,8 @@ BUT stakeholders with the strongest influence arenâ€™t the best experts and donâ
 Before investing into the project, precalculations to assess the viability of the project is needed. Project installation and setup cost against profit generation has to be evaluated.
 
 Rain fed irrigation in Kenya follow a simple evaluation process which is rarely even undertaken by the farmers.
-## code.............
+
+## code
 <img src="../Figures/current_evaluation.png" 
         alt="Unable to load content" 
         style="display: block; margin: 0 auto" />
@@ -514,7 +507,6 @@ compound_figure(model = irrigation_model_function_withoutDrought,
 
 #### compound_figure() function results
 
-    
 <img src="../Figures/with_drought_drip_compound_figure.png" 
         alt="Unable to load content" 
         style="display: block; margin: 0 auto" />
@@ -657,10 +649,7 @@ Drip Irrigation decision option had Yields, All other earnings and management_sa
 We hope to come up with estimate data that will give value to the uncertainties linked to our project using mcSimulation. 
 Building the model with Plot of the impact pathway and calibration of the data will consequentially take place.
 
-Setseed - to set the run of codes should start.
-
-<<<<<<< HEAD
-
+```{r }
 # Compound drip irrigation
 compound_figure(model = irrigation_model_function_withoutDrought,
                 input_table = input_table,
@@ -678,7 +667,8 @@ compound_figure(model = irrigation_model_function_withoutDrought,
                 model_runs = 1e2,
                 distribution_method = 'smooth_simple_overlay',
                 labels("Surface Irrigation"))
-````
+```
+
 # Analysis of the Results without Drought
 
 <img src="../Figures/with_drought_drip_compound_figure.png" 
@@ -698,29 +688,10 @@ The benefits are verse more and able to improve productivity, water use efficien
 
 Through the project and interaction with the R Programming language,  more insight on the language and its packages have availed its importance in research. Especialy under uncertainty when appropriate  decisions are required.
 
-
-# Reference_item
-
-
-
-
-```{r add_R_bib, include=FALSE}
-#knitr::write_bib(c(.packages(),
-                   #'knitr','decisionSupport'), 'reference_item.bib')
-=======
 # Reference
 ```{r add_R_bib, include=FALSE}
 knitr::write_bib(c(.packages(),
-                   'knitr','decisionSupport'), 'export.bib')
->>>>>>> d4cdec93f74564062eb0fad2f1c4c41069531e9e
+                   'knitr','decisionSupport'), 'reference_item.bib')
 ```
-
-
-
-
-```{r echo=FALSE}
-
-```
- 
 
 # THANK YOU
