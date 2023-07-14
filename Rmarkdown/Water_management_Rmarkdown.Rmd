@@ -210,9 +210,9 @@ Surface Irrigation option variables
 4. Surface_Establishmentcost = the cost due to the installation of the technology
 5. Surface_MaintenanceCost = All expenses that accrue due to the maintenance of the project
 
-To be able to evaluate the Net Present Value of all the decision option, we used the Discount rate of 8.0% (lower) and 12.0% (upper) which is widely recommended by the World Bank and International Development Cooperations as a standard for evaluating public investments in Developing Countries (readdddddddddpaperrrrrrrr)
+To be able to evaluate the Net Present Value of all the decision option, we used the Discount rate of 8.0% (lower) and 12.0% (upper) which is widely recommended by the World Bank and International Development Cooperations as a standard for evaluating public investments in Developing Countries.
 
-Due to the certainty in the area of study about the prevalence of drought, we also considered the drought estimates in the table to be around 10.0% (lower) and 30.0% (upper)
+Due to the certainty in the area of study about the prevalence of drought, we also considered the drought estimates in the table to be around 10.0% (lower) and 20.0% (upper)
 
 The all project is assessed for a period of 5 years. This is based on the period we consider the drip irrigation option to have fully recovered the investment.
 
