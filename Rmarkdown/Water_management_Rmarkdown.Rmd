@@ -21,11 +21,6 @@ Kenya has great potential to increase food production and get liberated from sea
 
 Around 80% (Strategic-Plan-Final)of the national irrigation schemes are still under surface irrigation system like; farrow, boarder, flood methods of irrigation. This leads to wastage of water resources, depletes ground  Water, uneven distribution then has been a problem and efficient water management should be one of the solution strategies. (@NIA2019)
 
-# Introduction                  
-Demand for more reliable food sources, continuous depletion of the natural resources and climate change due to anthropogenic factors have become a point of concern. It is from this background that many governments around the world set up irrigation schemes to enhance food and nutrition security and improve livelihoods in rural areas.
-
-Kenya has great potential to increase food production and get liberated from seasonal agricultural dependency through investing in more water efficient agricultural technologies to improve yields and subsequently rural development.
-
 Around 80% (Strategic-Plan-Final)of the national irrigation schemes are still under surface irrigation system like; farrow, boarder and flood methods of irrigation. This leads to wastage of water resources, depletion of ground  Water, uneven distribution of water in residential areas and National Parks as much water is drained from the landscape to downstream where the schemes are located. 
 
 Oftentimes this water is wasted as the amount supplied to certain crops (vegetable and cereals) at a particular time is more than what they can taken in. As a result, leaching of fertilizers, growth of weeds, and in some cases rotting of plants due to too much water hence less water use efficiency. 
@@ -226,7 +221,7 @@ Surface Irrigation option variables
 4. Surface_Establishmentcost = the cost due to the installation of the technology
 5. Surface_MaintenanceCost = All expenses that accrue due to the maintenance of the project
 
-To be able to evaluate the Net Present Value of all the decision option, we used the Discount rate of 8.0% (lower) and 12.0% (upper) which is widely recommended by the World Bank and International Development Cooperations as a standard for evaluating public investments in Developing Countries (readdddddddddpaperrrrrrrr)
+To be able to evaluate the Net Present Value of all the decision option, we used the Discount rate of 8.0% (lower) and 12.0% (upper) which is widely recommended by the World Bank and International Development Cooperations as a standard for evaluating public investments in Developing Countries.
 
 Due to the certainty in the area of study about the prevalence of drought, we also considered the drought estimates in the table to be around 10.0% (lower) and 30.0% (upper)
 
@@ -580,7 +575,7 @@ The authors recommend that the government of Kenya should consider drip irrigati
 The benefits are verse more and able to improve productivity, water use efficiency and promote eco_balance.
 
 # What authers learnt
- The research should ideally not base on literature rather identifying problems and finding best solution. This should be based on consideration of all the stakeholders, both exports and the community. Their ideas and presentation of the interlocked, complex uncertainty relationships, best define the niches and the appropriate solution.
+The research should ideally not base on literature rather identifying problems and finding best solution. This should be based on consideration of all the stakeholders, both exports and the community. Their ideas and presentation of the interlocked, complex uncertainty relationships, best define the niches and the appropriate solution.
 
 Through the project and interaction with the R Programming language,  more insight on the language and its packages have availed its importance in research. Especialy under uncertainty when appropriate  decisions are required.
 
