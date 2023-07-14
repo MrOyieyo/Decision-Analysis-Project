@@ -1,22 +1,18 @@
 ---
-title:DRIP IRRIGATION ADOPTION IN MWEA IRRGATON SCHEME,KENYA.
+title: DRIP IRRIGATION ADOPTION IN MWEA IRRGATON SCHEME,KENYA.
 author: Adrian, Apana, Silas, Steven
 date: 2023-07-12
 output: html_document
-bibliography:
-<<<<<<< HEAD
-- export.bib
-=======
-  
->>>>>>> ae31ddaec920d1d80e34ec6081ada037500480ff
+bibliography: exported Items.bib
 ---
 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
 ```
 
-<<<<<<< HEAD
+
 # Introduction
 
 Demand for more reliable food sources, continuous depletion of the natural resources and climate change due to anthropogenic factors have become a point of concern. It is from this background that many governments around the world set up irrigation schemes to enhance food and nutrition security, improve livelihoods in rural areas. (@UNFPA2022)
@@ -24,7 +20,7 @@ Demand for more reliable food sources, continuous depletion of the natural resou
 Kenya has great potential to increase food production and get liberated from seasonal agriculture dependency through investing in more water efficient agricultural technologies to improve yields and subsequently rural development.(@Kanda2022)
 
 Around 80% (Strategic-Plan-Final)of the national irrigation schemes are still under surface irrigation system like; farrow, boarder, flood methods of irrigation. This leads to wastage of water resources, depletes ground  Water, uneven distribution then has been a problem and efficient water management should be one of the solution strategies. (@NIA2019)
-=======
+
 # Introduction                  
 Demand for more reliable food sources, continuous depletion of the natural resources and climate change due to anthropogenic factors have become a point of concern. It is from this background that many governments around the world set up irrigation schemes to enhance food and nutrition security and improve livelihoods in rural areas.
 
@@ -37,23 +33,21 @@ Oftentimes this water is wasted as the amount supplied to certain crops (vegetab
 In the era of climate change with its impact on precipitation patterns, all governments around the world should rethink their management strategies to maximize returns from the limited resources. Kenya has had severe prolonged dry spells in the recent past in some parts of the country. 
 
 Sustainability is Key and the authors firmly believe that adoption of Drip Irrigation technology which is proved elsewhere as a water saving technique if put to use in the production of cereals and vegetables in Mwea Irrigation Scheme by the government would go a long way in achieving water use efficiency to increase food production, replenishing the ground water reserves, Biodiversity restoration, promotion of tourism as the National Parks up stream will also benefit from the water which remains in the landscape.  
->>>>>>> ae31ddaec920d1d80e34ec6081ada037500480ff
 
 
 # Objective of the Project. 
 Governments invest in projects which are financially viable and are beneficial to its citizens (public good).During this project the authors want to investigate the uptake of the project (Drip Irrigation) by the government of Kenya.The aim of this project is;
 
-<<<<<<< HEAD
+
 # Objective of the Poject. 
 Efficient Water use and management.This is the core for this project. Adoption of drip irrigation as a way to reduce the amount of water use and ensure consistence agricultural production.
 The authors therefore needed to know the scope and the adoption of this project across the country.
 (@Mati2023)
-=======
+
 1. To maximize Water use Efficiency and management in Mwea Irrigation scheme to enhance the crop productivity and environmental related benefits.
 
 2. To check the adoption capacity of the project by the government using the known public investment standards (cost-Benefit Analysis, Net Present Value). 
 
->>>>>>> ae31ddaec920d1d80e34ec6081ada037500480ff
 
 # Methodology for the Analysis.
 We conducted a Stakeholder Analysis to gain a deeper understanding of who the various stakeholders are in Mwea Irrigation scheme at the various levels of the project implementation. This also enabled us to generate the Conceptual Model and the Impact Pathways which depict the sequence of events that lead to the adoption of the project. Expert Calibration was done to generate estimates which enabled us to generate a simple and a complex Model which were built using Rprogramme Packages like; decisionsupport() and tidyverse(). The Assessment was done using functions like Net Present Value. visualization was through the use of plot_cashflow() and compound_figure() functions.
@@ -136,7 +130,7 @@ Government, NGO, irrigation authority = most important (as expected)
 BUT stakeholders with the strongest influence aren’t the best experts and don’t have the biggest available capital (ministry, etc.)
 
 # Project Evaluation
-Before investing into the project, precalculations to assess the viability of the project is needed. Project installation and setup cost against profit generation has to be evaluated.
+Before investing into the project, precalculations to assess the viability of the project is needed. Project installation and setup cost against profit generation has to be evaluated @castillo_social_nodate.
 
 Rain fed irrigation in Kenya follow a simple evaluation process which is rarely even undertaken by the farmers.
 ## code.............
@@ -151,7 +145,7 @@ looking at both short term and long term benefits and general cost for the proje
 
 At Policy Level - The government is faced with a duty to decide on the best public good to invest in which should be economically viable. Currently the government employs the surface system of irrigation and we want them to adopt the new Drip Irrigation technologies because of the benefits.Government always looks at the social economic value and the viability of the project before making decision to adopt and allocate resources. 
 
-Drip Irrigation Option
+## Drip Irrigation Option
 
 Benefits
 Considering the option of Drip Irrigation, benefits were categorized depending on the period they would be achieved. Short-term (ie. the benefits that are immediately realized a few months (6-12 months) after the installation of the technology) for example; Increase in yields, enhanced water use efficiency, reduction in farmer operational costs as hired labor gets low and reduced weeding intervals thus increasing farmer savings. These were mainly Benefits to Farmers (BFT). The other category is Long-term (ie. benefits achieved above one year, these are basically benefits to both the government and farmers (BTGF) these include; increase in incomes and standards of living, better nutrition, increase in Hydro Power generation ( a big earner to government) as a result of reduction in water diversion from the Pekera and Nyamindi rivers into the scheme, enhancement in tourism due to enhanced water management in the landscape to support biodiversity and National Parks (()00), and lastly improvement in Landscape and Ecosystem.
@@ -160,7 +154,7 @@ The Total Benefits (TB) from the option of Drip Irrigation is considered as a fu
 
 The costs resulting from this option were also assessed (Installation and Maintenance costs) to get the Total Costs of the project.
 
-Assumptions
+## Assumptions
 Definitely to realize the results of the project there are certain factors that have to be put into consideration so have to increase the project's success these include;
 
 1. Good Agronomy- This should hold if the project is to realize the increase in yields
@@ -180,11 +174,11 @@ Definitely to realize the results of the project there are certain factors that 
 8. The farmers are users of the technology should handle it with great care to lower the maintenance cost.
 
 
-Surface Irrigation Option
+## Surface Irrigation Option
 
 In order to assess the benefits of the Drip Irrigation, a comparison from the statusquo technique (Surface Irrigation) using the same inputs of Yields, Water usage, incomes, Hydo-Power generation, earning from tourism ( abundance of biodiversity), Ecosystem, Nutrition and savings from labor and weeding) was done to get the actual benefits from this option. Installation and Maintenance costs were also looked for easy comparisons.
 
-Decision Uptake Analysis
+## Decision Uptake Analysis
 
 This is based on the Net decision Outcome from either option considering the factors of Net Present Value (NPV).
 We know that the climate is changing and so are the precipitation events, we factored in the Drought scenario to assess the results of both options both in normal years and drought years.These will form our basic parts of Monte Carlo Evaluation process.
@@ -347,6 +341,7 @@ plot_distributions(mcSimulation_object = SurfaceIrr_mc_simulation,
                    new_names = "Outcome distribution for profits")
 
 ```
+
 # Analysis of the Results of the simple model
 
 
@@ -580,16 +575,20 @@ compound_figure(model = irrigation_model_function_withoutDrought,
         alt="Unable to load content" 
         style="display: block; margin: 0 auto" />
 
-# Learning point
-We hope to come up with estimate data that will give value to the uncertainties linked to our project using McSimulation. 
-Building the model with Plot of the impact pathway and calibration of the data will consequentially take place.
+# Recomendation
+The authors recommend that the government of Kenya should consider drip irrigation over the conventional surface irrigation.
+The benefits are verse more and able to improve productivity, water use efficiency and promote eco_balance.
 
-Setseed - to set the run of codes should start.
+# What authers learnt
+ The research should ideally not base on literature rather identifying problems and finding best solution. This should be based on consideration of all the stakeholders, both exports and the community. Their ideas and presentation of the interlocked, complex uncertainty relationships, best define the niches and the appropriate solution.
+
+Through the project and interaction with the R Programming language,  more insight on the language and its packages have availed its importance in research. Especialy under uncertainty when appropriate  decisions are required.
+
 
 # References
 ```{r add_R_bib, include=FALSE}
 knitr::write_bib(c(.packages(),
-                   'knitr','decisionSupport'), 'export.bib')
+                   'knitr','decisionSupport'), 'exported Items.bib')
 ```
 
 
