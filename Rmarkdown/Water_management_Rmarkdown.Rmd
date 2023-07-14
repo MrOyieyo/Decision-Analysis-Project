@@ -25,7 +25,7 @@ In the era of climate change with its impact on precipitation patterns, all gove
 Sustainability is Key and the authors firmly believe that adoption of Drip Irrigation technology which is proved elsewhere as a water saving technique if put to use in the production of cereals and vegetables in Mwea Irrigation Scheme by the government would go a long way in achieving water use efficiency to increase food production, replenishing the ground water reserves, Biodiversity restoration, promotion of tourism as the National Parks up stream will also benefit from the water which remains in the landscape.  
 
 
-## Objective of the Project. 
+## Objectives of the Project. 
 Governments invest in projects which are financially viable and are beneficial to its citizens (public good).During this project the authors want to investigate the uptake of the project (Drip Irrigation) by the government of Kenya.The aim of this project is;
 
 1. To maximize Water use Efficiency and management in Mwea Irrigation scheme to enhance the crop productivity and environmental related benefits.
@@ -55,8 +55,6 @@ library(knitr)
 # Decision Maker
 All interventions and development works in a country are implemented by government or on behalf of the government or in partnership with government. Therefore, Government of Kenya is the targeted implementer of the project. All the policies we hope to be considered are designed and and amended by the government @holting_including_2020. 
 
-## Decision Maker
-All interventions and development works in a country are implemented by government or on behalf of the government or in partnership with government. Therefore, Government of Kenya is the targeted implementer of the project. All the policies we hope to be considered are designed and and amended by the government. 
 
 # Stakeholders Analysis 
  The individual/group who has interests/can affect/ is affected by the decision.In the scheme there are many stakeholders and the majority was sampled to present that category.Government of Kenya, National Irrigation Authority as examples.
@@ -329,6 +327,7 @@ plot_distributions(mcSimulation_object = SurfaceIrr_mc_simulation,
                    new_names = "Outcome distribution for profits")
 
 ```
+
 ## Analysis of the Results of the simple model
 
 Drip Irrigation.
@@ -487,6 +486,7 @@ compound_figure(model = irrigation_model_function_withoutDrought,
                 distribution_method = 'smooth_simple_overlay',
                 labels("Surface Irrigation"))
 ````
+
 ### Analysis of the Results without Drought
 
 #### plot_distribution() function results
@@ -625,6 +625,7 @@ compound_figure(model = irrigation_model_function_withDrought,
 
 
 ```
+
 ### Analysis of the Results with Drought
 
 #### plot_distribution() function results
@@ -641,7 +642,7 @@ To explicitly have a clear understanding of the decision option outcomes, we gen
 Drip Irrigation decision option had Yields, All other earnings and management_savings as positive values with All other earnings and Yields variables above the threshold indicating that they are very important inputs to consider in the assessment model. Installation costs were negative as they reduce the our outcomes.
     
 
-# Learning point
+# Learning points
 We hope to come up with estimate data that will give value to the uncertainties linked to our project using mcSimulation. 
 Building the model with Plot of the impact pathway and calibration of the data will consequentially take place.
 
@@ -675,7 +676,7 @@ compound_figure(model = irrigation_model_function_withoutDrought,
         alt="Unable to load content" 
         style="display: block; margin: 0 auto" />
 
-# Recomendation
+# Recomendations
 - Government of Kenya should consider drip irrigation over the conventional 
 surface irrigation on vegetable and cereal plot areas. 
 - Without Drought the the Installation cost variable is positively significant as it 
@@ -684,7 +685,7 @@ greatly impacts the outcomes. This should be limited.
 efficiency and promote eco_balance.
 
 
-# What authors learnt
+# What the authors learnt
 - Consideration of all the stakeholders in the study area is important as their  ideas 
 and presentation of the interlocked, complex uncertainty relationships, best define 
 the niches and the appropriate solution.
@@ -695,7 +696,7 @@ processes (from Optimistic Skeptic)
 have availed its importance in research. 
 - Especially under uncertainty when appropriate  decisions are required
 
-# Reference
+# References
 1. The  status  and  challenges  of  a  modern  irrigation  system  in  Kenya:  A 
 systematic review
 2. The  social  discount  rate  in  the  evaluation  of  investment  projects:  an 
