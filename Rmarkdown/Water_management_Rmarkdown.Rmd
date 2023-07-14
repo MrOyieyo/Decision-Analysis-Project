@@ -129,12 +129,9 @@ Before investing into the project, precalculations to assess the viability of th
 
 Rain fed irrigation in Kenya follow a simple evaluation process which is rarely even undertaken by the farmers.
 
-## code
 <img src="../Figures/current_evaluation.png" 
         alt="Unable to load content" 
         style="display: block; margin: 0 auto" />
-
-## Description for the project Evaluation
 
 
 # Conceptual model
@@ -500,12 +497,18 @@ compound_figure(model = irrigation_model_function_withoutDrought,
 ### Analysis of the Results without Drought
 
 #### plot_distribution() function results
-
+The distribution of the expected NPV of Drip irrigation showed high certainty due to the peakness of the plots and with more benefits while the surface irrigation decision option distribution of expected NPV showed more uncertainties and less outcomes.
+The boxplot display a graphical representation of the outcomes from both decision options with the median line and outliers. The Drip Irrigation option had more better outcomes with outliers on one side.
 
 #### plot_cashflow() function results
-
+The distributions from the cashflows for the 5 years of the Drip Irrigation decision option assessment had a median outcome rising very fast in the 2 years of the project implementation afterwards, it started varying but far higher than the median of surface Irrigation decision option.
+The median of the surface Irrigation decision option slightly rose in the first 3 years of implementation and it somehow leveled off during the 5 year period of assessment.
 
 #### compound_figure() function results
+To explicitly have a clear understanding of the decision option outcomes, we generated the single figure from all variables.
+
+Drip Irrigation decision option had Yields, All other earnings and management_savings as positive values with All other earnings and Yields variables above the threshold indicating that they are very important inputs to consider in the assessment model. The Installation costs negatively impact the outcomes but it is very important to consider as it has a great value of information to determine the decision option.
+
 
 <img src="../Figures/with_drought_drip_compound_figure.png" 
         alt="Unable to load content" 
@@ -680,15 +683,35 @@ compound_figure(model = irrigation_model_function_withoutDrought,
         style="display: block; margin: 0 auto" />
 
 # Recomendation
-The authors recommend that the government of Kenya should consider drip irrigation over the conventional surface irrigation.
-The benefits are verse more and able to improve productivity, water use efficiency and promote eco_balance.
+- Government of Kenya should consider drip irrigation over the conventional 
+surface irrigation on vegetable and cereal plot areas. 
+- Without Drought the the Installation cost variable is positively significant as it 
+greatly impacts the outcomes. This should be limited.
+- The  benefits  are  verse  more  and  able  to  improve  productivity,  water  use 
+efficiency and promote eco_balance.
 
-# What authers learnt
- The research should ideally not base on literature rather identifying problems and finding best solution. This should be based on consideration of all the stakeholders, both exports and the community. Their ideas and presentation of the interlocked, complex uncertainty relationships, best define the niches and the appropriate solution.
 
-Through the project and interaction with the R Programming language,  more insight on the language and its packages have availed its importance in research. Especialy under uncertainty when appropriate  decisions are required.
+# What authors learnt
+- Consideration of all the stakeholders in the study area is important as their  ideas 
+and presentation of the interlocked, complex uncertainty relationships, best define 
+the niches and the appropriate solution.
+- Integrating the different conventional methodologies and computer based models 
+limites the bias. This offers clear insights into forecasting for better decision making 
+processes (from Optimistic Skeptic)
+- With the R Programming language,  more insight on the language and its packages 
+have availed its importance in research. 
+- Especially under uncertainty when appropriate  decisions are required
 
 # Reference
+1. The  status  and  challenges  of  a  modern  irrigation  system  in  Kenya:  A 
+systematic review
+2. The  social  discount  rate  in  the  evaluation  of  investment  projects:  an 
+application for Ecuador:
+3. Farmer-led  irrigation  development  in  Kenya:  Characteristics  and 
+opportunities:
+4. Strengthening  agricultural  water  efficiency  and  productivity  on  the African 
+and global level
+
 ```{r add_R_bib, include=FALSE}
 knitr::write_bib(c(.packages(),
                    'knitr','decisionSupport'), 'reference_item.bib')
