@@ -1,14 +1,13 @@
 ---
 title: "DRIP IRRIGATION ADOPTION IN MWEA IRRGATON SCHEME-KENYA."
-author: "Adrian, Apana, Silas, Steven"
+author: "Adrian, Aparna, Silas, Steven"
 date: "2023-07-12"
 output:
   html_document: default
   pdf_document: default
-  word_document: default
 bibliography:
-- Rmarkdown/export.bib
-- Rmarkdown/exported_items.bib
+- export.bib
+- exported_items.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -19,7 +18,7 @@ library(decisionSupport)
 
 ```{r add_R_bib, include=FALSE}
 knitr::write_bib(c(.packages(),
-                   'knitr', 'decisionSupport'), 'Rmarkdown/export.bib')
+                   'knitr', 'decisionSupport'), 'export.bib')
 ```
 ---
 
@@ -703,10 +702,3 @@ compound_figure(model = irrigation_model_function_withoutDrought,
 2. The  social  discount  rate  in  the  evaluation  of  investment  projects:  an application for Ecuador:
 3. Farmer-led  irrigation  development  in  Kenya:  Characteristics  and opportunities:
 4. Strengthening  agricultural  water  efficiency  and  productivity  on  the African and global level
-
-```{r add_R_bib, include=FALSE}
-knitr::write_bib(c(.packages(),
-                   'knitr','decisionSupport'), 'Rmarkdown/export.bib')
-```
-
-# THANK YOU
