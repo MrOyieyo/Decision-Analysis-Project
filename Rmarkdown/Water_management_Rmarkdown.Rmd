@@ -1,28 +1,39 @@
 ---
-title : DRIP IRRIGATION ADOPTION IN MWEA IRRGATON SCHEME,KENYA.
-author: Adrian, Apana, Silas, Steven
-date: 2023-07-12
-output: html_document
-bibliography: ../Rmarkdown/reference_item.bib
+title: "DRIP IRRIGATION ADOPTION IN MWEA IRRGATON SCHEME-KENYA."
+author: "Adrian, Apana, Silas, Steven"
+date: "2023-07-12"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+bibliography:
+- Rmarkdown/export.bib
+- Rmarkdown/exported_items.bib
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+library(decisionSupport)
 ```
+
+```{r add_R_bib, include=FALSE}
+knitr::write_bib(c(.packages(),
+                   'knitr', 'decisionSupport'), 'Rmarkdown/export.bib')
+```
+---
 
 # Introduction
 
-Demand for more reliable food sources, continuous depletion of the natural resources and climate change due to anthropogenic factors have become a point of concern. It is from this background that many governments around the world set up irrigation schemes to enhance food and nutrition security, improve livelihoods in rural areas. (@mati_farmer-led_2023)
+Demand for more reliable food sources, continuous depletion of natural resources and climate change due to anthropogenic factors have become a point of concern. It is from this background that many governments around the world set up irrigation schemes to enhance food and nutrition security, and improve livelihoods in rural areas. (@mati_farmer-led_2023)
 
-Kenya has great potential to increase food production and get liberated from seasonal agriculture dependency through investing in more water efficient agricultural technologies to improve yields and subsequently rural development.(@kanda_status_2022)
+Kenya has a great potential to increase food production to get liberated from seasonal agricultural dependency through investing in more water efficient agricultural technologies to improve yields and subsequently rural development.(@kanda_status_2022)
 
-Around 80% (Strategic-Plan-Final)of the national irrigation schemes are still under surface irrigation system like; farrow, boarder, flood methods of irrigation. This leads to wastage of water resources, depletes ground  Water, uneven distribution then has been a problem and efficient water management should be one of the solution strategies. (@holting_including_2020)
-
-Oftentimes this water is wasted as the amount supplied to certain crops (vegetable and cereals) at a particular time is more than what they can taken in. As a result, leaching of fertilizers, growth of weeds, and in some cases rotting of plants due to too much water hence less water use efficiency. 
+Around 80% (Strategic-Plan-Final) of the national irrigation schemes are still under surface irrigation system like; farrow, boarder, flood methods of irrigation. This leads to wastage of water resources, depletion of  ground  Water, and uneven distribution of water in the fields.Oftentimes water is wasted as the amount supplied to certain crops (vegetable and cereals) at a particular time is more than what they can taken in. As a result, leaching of fertilizers, growth of weeds, and in some cases rotting of plants due to too much water hence less water use efficiency. Moving forward, efficient water management strategies should become a priority. (@holting_including_2020)
 
 In the era of climate change with its impact on precipitation patterns, all governments around the world should rethink their management strategies to maximize returns from the limited resources. Kenya has had severe prolonged dry spells in the recent past in some parts of the country. 
 
-Sustainability is Key and the authors firmly believe that adoption of Drip Irrigation technology which is proved elsewhere as a water saving technique if put to use in the production of cereals and vegetables in Mwea Irrigation Scheme by the government would go a long way in achieving water use efficiency to increase food production, replenishing the ground water reserves, Biodiversity restoration, promotion of tourism as the National Parks up stream will also benefit from the water which remains in the landscape.  
+Sustainability is Key and the authors firmly believe that adoption of Drip Irrigation technology which is a proved and improved strategy in arid countries like Israel and elsewhere as a water saving technique if put to use in the production of cereals and vegetables in Mwea Irrigation Scheme by the government of Kenya, it would go a long way in achieving water use efficiency to increase food production, replenishing the ground water reserves, Biodiversity restoration, promotion of tourism as the National Parks up stream will also benefit from the water which remains in the landscape.  
 
 
 ## Objectives of the Project. 
@@ -34,7 +45,7 @@ Governments invest in projects which are financially viable and are beneficial t
 
 
 ## Methodology for the Analysis.
-We conducted a Stakeholder Analysis to gain a deeper understanding of who the various stakeholders are in Mwea Irrigation scheme at the various levels of the project implementation. This also enabled us to generate the Conceptual Model and the Impact Pathways which depict the sequence of events that lead to the adoption of the project. Expert Calibration was done to generate estimates which enabled us to generate a simple and a complex Model which were built using Rprogramme Packages like; decisionsupport() and tidyverse(). The Assessment was done using functions like Net Present Value. visualization was through the use of plot_cashflow() and compound_figure() functions.
+We conducted a Stakeholder Analysis to gain a deeper understanding of who the various stakeholders are in Mwea Irrigation scheme at the various levels of the project implementation. This also enabled us to generate the Conceptual Model and the Impact Pathways which depict the sequence of events that lead to the adoption of the project. Expert Calibration was done to generate estimates which enabled us to generate a simple and a complex Model which were built using R programme Packages like; decisionsupport() and tidyverse(). The Assessment was done using functions like Net Present Value (NPV). visualization was through the use of plot_cashflow() and compound_figure() functions.
 
 
 ```{r echo=FALSE, include=FALSE}
@@ -57,7 +68,7 @@ All interventions and development works in a country are implemented by governme
 
 
 # Stakeholders Analysis 
- The individual/group who has interests/can affect/ is affected by the decision.In the scheme there are many stakeholders and the majority was sampled to present that category.Government of Kenya, National Irrigation Authority as examples.
+ A stakeholder is an individual/group/item with interests that can affect or is affected by the decision of the project.In the scheme there are many stakeholders and the majority were considered with a view of precisely identifying the Key categories affecting and being affected by the decision.
 
 Based on the STRATEGIC PLAN (2019-2023) by National Irrigation Authority, 14 stakeholders were considered.
 For each of them, we defined their : 
@@ -70,7 +81,7 @@ For each of them, we defined their :
 
 These were the core basis of categorizing the stakeholders and their influence to the whole project.
 
-In the purpose of analysis and defining most important stakeholders and the decision maker
+For the purpose of analysis and defining most important stakeholders and the decision maker
 Plot #capital availability, #expertise,  #influence.
 
 ```{r echo=FALSE}
@@ -116,9 +127,9 @@ Government, NGO, irrigation authority = most important (as expected)
 BUT stakeholders with the strongest influence aren’t the best experts and don’t have the biggest available capital (ministry, etc.)
 
 # Project Evaluation
-Before investing into the project, precalculations to assess the viability of the project is needed. Project installation and setup cost against profit generation has to be evaluated.
+Before investing into the project, pre-calculations to assess the viability of the project is needed. Project installation and setup cost against profits generated over time has to be evaluated.
 
-Rain fed irrigation in Kenya follow a simple evaluation process which is rarely even undertaken by the farmers.
+Rain fed irrigation in Kenya follow a simple evaluation process which is rarely undertaken by the farmers.
 
 <img src="../Figures/current_evaluation.png" 
         alt="Unable to load content" 
@@ -126,15 +137,14 @@ Rain fed irrigation in Kenya follow a simple evaluation process which is rarely 
 
 
 # Conceptual model
-This Framework illustrates the contribution effect of all the uncertainties, assumptions benefits and negative consequences resulting from the project.
-looking at both short term and long term benefits and general cost for the project.
+This Framework illustrates the contributions and effects of all the uncertainties, assumptions, benefits and negative consequences resulting from the project while considering both short and long term benefits and general cost for the project.
 
 At Policy Level - The government is faced with a duty to decide on the best public good to invest in which should be economically viable. Currently the government employs the surface system of irrigation and we want them to adopt the new Drip Irrigation technologies because of the benefits.Government always looks at the social economic value and the viability of the project before making decision to adopt and allocate resources. 
 
 Drip Irrigation Option
 
 Benefits
-Considering the option of Drip Irrigation, benefits were categorized depending on the period they would be achieved. Short-term (ie. the benefits that are immediately realized a few months (6-12 months) after the installation of the technology) for example; Increase in yields, enhanced water use efficiency, reduction in farmer operational costs as hired labor gets low and reduced weeding intervals thus increasing farmer savings. These were mainly Benefits to Farmers (BFT). The other category is Long-term (ie. benefits achieved above one year, these are basically benefits to both the government and farmers (BTGF) these include; increase in incomes and standards of living, better nutrition, increase in Hydro Power generation ( a big earner to government) as a result of reduction in water diversion from the Pekera and Nyamindi rivers into the scheme, enhancement in tourism due to enhanced water management in the landscape to support biodiversity and National Parks (()00), and lastly improvement in Landscape and Ecosystem.
+Considering the option of Drip Irrigation, benefits were categorized depending on the period they would be achieved. Short-term (ie. the benefits that are immediately realized a few months (6-12 months) after the installation of the technology) for example; Increase in yields, enhanced water use efficiency, reduction in farmer operational costs as hired labor gets low and reduced weeding intervals thus increasing farmer savings. These were mainly Benefits to Farmers (BFT). The other category is Long-term (ie. benefits achieved above one year, these are basically benefits to both the government and farmers (BTGF) these include; increase in incomes and standards of living, better nutrition, increase in Hydro Power generation ( a big earner to government) as a result of reduction in water diversion from the Pekera and Nyamindi rivers into the scheme, enhancement in tourism due to enhanced water management in the landscape to support biodiversity and National Parks (Mwea National Reserve), and lastly improvement in Landscape and Ecosystem.
 
 The Total Benefits (TB) from the option of Drip Irrigation is considered as a function of the Benefits from Short-term and benefits from Long-term. 
 
@@ -194,7 +204,7 @@ The Surface Irrigation option Impact pathway was designed using the graph.formul
 
 ## Estimates
 
-After the calibration training, the authors gained skills in providing expert estimates on the various required variables from the conceptual model.These were provided based on literature, gut feeling, individual experiences and verification with the author who comes from the Kenya.
+During the calibration training, the authors gained skills in providing expert estimates on the various required variables from the conceptual model.These were provided based on literature, gut feeling, individual experiences and verification with the author who comes from the Kenya.
 
 Apart from yields as inputs in the estimates (tonnes/hectare) which we later monetized with the market price (5.00 KSh), the other estimates were put as 1,000 of Kenyan Shillings (KSh.). To have a shortened table of estimates, the inputs from the conceptual model were summarized into 3 broad variables for each option as follows;
 
@@ -212,7 +222,7 @@ Surface Irrigation option variables
 4. Surface_Establishmentcost = the cost due to the installation of the technology
 5. Surface_MaintenanceCost = All expenses that accrue due to the maintenance of the project
 
-To be able to evaluate the Net Present Value of all the decision option, we used the Discount rate of 8.0% (lower) and 12.0% (upper) which is widely recommended by the World Bank and International Development Cooperations as a standard for evaluating public investments in Developing Countries.
+To be able to evaluate the Net Present Value of all the decision option, we used the Discount rate of 8.0% (lower) and 12.0% (upper) which is widely recommended by the World Bank and International Development Cooperation as a standard for evaluating public investments in Developing Countries.
 
 Due to the certainty in the area of study about the prevalence of drought, we also considered the drought estimates in the table to be around 10.0% (lower) and 20.0% (upper)
 
@@ -344,11 +354,11 @@ The simple model was overly simplified because the following important aspects w
 
 2. Each decision option had its own model function, this limited the mcSimulation results to be subjected to the same environment.
 
-3. Separating the distribution plots doesn't allow you chance to properly assess the results on how the distributions shade (overrap) each other.
+3. Separating the distribution plots doesn't allow you chance to properly assess the results on how the distributions shade (over rap) each other.
 
 4. It never considered important factors for decision analysis in the context of the Irrigation scheme like; NPV, Discount rate, number of years for the assessment, and varying of the installation costs to only run  for the first year.
 
-Note: All these shortfalls made the simple model so unrealistic to be used to make a decision.
+Note: All these shortfalls made the simple model so unrealistic to be used in decision making.
 
 # Model Upgrade
 To improve the assessment for a better decision option, we addressed the shortfalls for the simple model by;
@@ -357,7 +367,7 @@ To improve the assessment for a better decision option, we addressed the shortfa
 
 2. Combining both decision options to be run in one code-block
 
-3. The timeframe for the project was set to 5 years as the timeline considered to have generated enough income to offset the cost of Drip Irrigation system installation.
+3. The time frame for the project was set to 5 years as the timeline considered to have generated enough income to offset the cost of Drip Irrigation system installation.
 
 4. The Installation costs for both decision options were made to run for only the first year of the project implementation. 
 
@@ -375,7 +385,7 @@ To improve the assessment for a better decision option, we addressed the shortfa
    
    c) compound_figure() function from the decisionSupport library to show single figure outputs for assessment. This analysis was to help in decision making if to take-up the project or not as well as indicating the most important variables.
    
-## Model withouth Drought
+## Model without Drought
 We wanted to simulate the outcomes of the project under normal conditions (rain) to assess if it is justifiable to invest in the expensive technology. This was achieved with the chance_event() function while setting the value_if to 0, and Value_if_not to 0, for the 5 years of the assessment.
 ````{r echo=FALSE}
 #Code without drought consideration
@@ -677,38 +687,26 @@ compound_figure(model = irrigation_model_function_withoutDrought,
         style="display: block; margin: 0 auto" />
 
 # Recomendations
-- Government of Kenya should consider drip irrigation over the conventional 
-surface irrigation on vegetable and cereal plot areas. 
-- Without Drought the the Installation cost variable is positively significant as it 
-greatly impacts the outcomes. This should be limited.
-- The  benefits  are  verse  more  and  able  to  improve  productivity,  water  use 
-efficiency and promote eco_balance.
+- Government of Kenya should consider drip irrigation over the conventional surface irrigation in vegetable and cereal production plots of Mwea Irrigation Scheme. 
+- Without Drought, the Installation cost variable should be limited as it is positively significant and greatly impacts the outcomes.
+- The  benefits  due to the adoption of Irrigation systems are  much more leading to an improvement in vegetable and cereal  productivity,  water  use efficiency and promotion of Eco_systems' balance.
 
 
 # What the authors learnt
-- Consideration of all the stakeholders in the study area is important as their  ideas 
-and presentation of the interlocked, complex uncertainty relationships, best define 
-the niches and the appropriate solution.
-- Integrating the different conventional methodologies and computer based models 
-limites the bias. This offers clear insights into forecasting for better decision making 
-processes (from Optimistic Skeptic)
-- With the R Programming language,  more insight on the language and its packages 
-have availed its importance in research. 
-- Especially under uncertainty when appropriate  decisions are required
+- Consideration of all the stakeholders in the study area is important as their  ideas and presentation of the interlocked, complex uncertainty relationships, best define the niches and the appropriate solution.
+- Integrating the different conventional methodologies and computer based models limits human biases that can affect the outcomes of a decision making or forecasting model. This offers clear insights into forecasting for better decision making processes (from Optimistic Skeptic).
+- R Programming language,  more insight on the language and its packages, it's application and importance in research. 
+- We live in fast-changing world, this requires to continuously update our thoughts, perspectives and the decisions we make. Very often, we are faced with uncertainties due to lack of data to make informed and appropriate  decisions when required. Banking on literature, expert knowledge and analysis coupled with various R programming packages are handy in developing and supporting the decision making process with less biases.
 
 # References
-1. The  status  and  challenges  of  a  modern  irrigation  system  in  Kenya:  A 
-systematic review
-2. The  social  discount  rate  in  the  evaluation  of  investment  projects:  an 
-application for Ecuador:
-3. Farmer-led  irrigation  development  in  Kenya:  Characteristics  and 
-opportunities:
-4. Strengthening  agricultural  water  efficiency  and  productivity  on  the African 
-and global level
+1. The  status  and  challenges  of  a  modern  irrigation  system  in  Kenya:  A systematic review
+2. The  social  discount  rate  in  the  evaluation  of  investment  projects:  an application for Ecuador:
+3. Farmer-led  irrigation  development  in  Kenya:  Characteristics  and opportunities:
+4. Strengthening  agricultural  water  efficiency  and  productivity  on  the African and global level
 
 ```{r add_R_bib, include=FALSE}
 knitr::write_bib(c(.packages(),
-                   'knitr','decisionSupport'), 'reference_item.bib')
+                   'knitr','decisionSupport'), 'Rmarkdown/export.bib')
 ```
 
 # THANK YOU
