@@ -1,5 +1,5 @@
 ---
-title: "DRIP IRRIGATION ADOPTION IN MWEA IRRGATON SCHEME-KENYA."
+title: "DRIP IRRIGATION ADOPTION IN MWEA IRRIGATON SCHEME-KENYA."
 author: "Adrian, Aparna, Silas, Steven"
 date: "2023-07-12"
 output:
